@@ -7,12 +7,8 @@
     .NOTES
         NAME : PSLogger
         VERSION : 1.3.5
-        LAST UPDATED: 11/16/2015
-        AUTHOR : Bryan Dady | https://github.com/bcdady/
-        Original Write-Log Author: Jeffery Hicks
-        http://jdhitsolutions.com/blog
-        http://twitter.com/JeffHicks
-        Date: 3/3/2011
+        LAST UPDATED: 06-02-2020
+        AUTHOR : Henk van Malsen
 #>
 
 # Setup necessary configs for PSLogger's Write-Log cmdlet
@@ -25,12 +21,10 @@
 # If this path doesn't already exist, it will be created later, in Write-Log function
 [string]$global:loggingPath = Join-Path -Path "$([Environment]::GetFolderPath('MyDocuments'))" -ChildPath 'WindowsPowerShell\log'
 # Handle when special Environment variable MyDocuments is a mapped drive, it returns as the full UNC path.
-if (([Environment]::GetFolderPath('MyDocuments')).Substring(0,2) -match '\\')
-{
+if (([Environment]::GetFolderPath('MyDocuments')).Substring(0,2) -match '\\'){ 
     $global:loggingPath = $loggingPath.Replace("$(Split-Path -Path "$([Environment]::GetFolderPath('MyDocuments'))" -Parent)"+'\',$(Get-PSDrive -PSProvider FileSystem | Where-Object -FilterScript {
                 $PSItem.DisplayRoot -eq $(Split-Path -Path "$([Environment]::GetFolderPath('MyDocuments'))" -Parent)
     }).Root)
-
 }
 
 [string]$global:logFileDateString = Get-Date -UFormat '%Y%m%d'
@@ -40,8 +34,7 @@ New-Variable -Name LastFunction -Description "Retain 'state' of the last functio
 [bool]$writeIntro = $true
 [string]$global:LastFunction
 
-Function Write-Log
-{
+Function Write-Log {
 <#
     .Synopsis
         Write a message to a log file.
@@ -119,19 +112,15 @@ Function Write-Log
     )
 
     # Assign Function variable to 'PowerShell' if blank or null
-    if (($Function -eq $null) -or ($Function -eq ''))
-    {
+    if (($Function -eq $null) -or ($Function -eq '')) {
         $Function = 'PowerShell'
     }
 
     # Detect if this Function is the same as the $LastFunction. If not, verbosely log which new Function is active
-    if ($Function -eq $LastFunction)
-    {
+    if ($Function -eq $LastFunction) {
         # Retain 'state' of the last function name called, to streamline logging statements from the same function
         $writeIntro = $false
-    }
-    else
-    {
+    } else {
         Set-Variable -Name LastFunction -Value $Function -Force -Scope Global
         $writeIntro = $true
     }
@@ -139,40 +128,30 @@ Function Write-Log
     # Detect -debug mode:
     # http://blogs.msdn.com/b/powershell/archive/2009/04/06/checking-for-bound-parameters.aspx
     # https://kevsor1.wordpress.com/2011/11/03/powershell-v2-detecting-verbose-debug-and-other-bound-parameters/
-    if ($PSBoundParameters['Debug'].IsPresent)
-    {
+    if ($PSBoundParameters['Debug'].IsPresent) {
         [bool]$script:testMode = $true
         $logFilePref = Join-Path -Path "$loggingPath\test" -ChildPath "$("$Function", "$logFileDateString" -join '_').log"
-    }
-    else
-    {
+    } else {
         [bool]$testMode = $false
         $logFilePref = Join-Path -Path "$loggingPath" -ChildPath "$("$Function", "$logFileDateString" -join '_').log"
     }
 
     # Pass on the message to Write-Debug cmdlet if -Debug parameter was used
-    if ($testMode)
-    {
+    if ($testMode) {
         Write-Debug -Message $Message
-        if ($writeIntro -and ( $Message -notlike 'Exit*'))
-        {
+        if ($writeIntro -and ( $Message -notlike 'Exit*')) {
             Write-Output -InputObject "Logging [Debug] to $logFilePref`n"
         }
-    }
-    elseif ($PSBoundParameters['Verbose'].IsPresent)
-    {
+    } elseif ($PSBoundParameters['Verbose'].IsPresent) {
         #Pass on the message to Write-Verbose cmdlet if -Verbose parameter was used
         Write-Verbose -Message $Message
-        if ($writeIntro -and ( $Message -notlike 'Exit*'))
-        {
+        if ($writeIntro -and ( $Message -notlike 'Exit*')) {
             Write-Output -InputObject "Logging to $logFilePref`n"
         }
     }
 
     # Only write to the log file if the $LoggingPreference variable is set to Continue
-    if ($loggingPreference -eq 'Continue')
-    {
-
+    if ($loggingPreference -eq 'Continue') {
         # Before writing a copy of $Message to an output file, strip line breaks and/or other formatting that could interfere with clear/standardized logging
         $Message = $Message -replace "`n", ' '
         $Message = $Message -replace '\s{2,}', ' '
@@ -186,29 +165,22 @@ Function Write-Log
 
         # Confirm or create LogFile path, otherwise Out-File throws DirectoryNotFoundException;
         # Only need to do this once per unique $LogFile path, so use $writeIntro as that flag
-        if ($writeIntro -and (-not (Test-Path -Path $(Split-Path -Path $LogFile -Parent) -PathType Container) ) )
-        {
+        if ($writeIntro -and (-not (Test-Path -Path $(Split-Path -Path $LogFile -Parent) -PathType Container) ) ) {
             Write-Output -InputObject "$(Get-Date) Creating logging path: $(Split-Path -Path $LogFile)" -NoEnumerate | Out-Host
             New-Item -Path $(Split-Path -Path $LogFile) -Force -ItemType Directory -ErrorAction Ignore
         }
 
-        if ($testMode)
-        {
+        if ($testMode) {
             Write-Output -InputObject "$(Get-Date) [Debug] $Message" -NoEnumerate | Out-File -FilePath $LogFile -Append
-        }
-        elseif ($PSBoundParameters['Verbose'].IsPresent)
-        {
+        } elseif ($PSBoundParameters['Verbose'].IsPresent) {
             Write-Output -InputObject "$(Get-Date) [Verbose] $Message" -NoEnumerate | Out-File -FilePath $LogFile -Append
-        }
-        else
-        {
+        } else {
             Write-Output -InputObject "$(Get-Date) $Message" -NoEnumerate | Out-File -FilePath $LogFile -Append
         }
     }
 } #end function
 
-Function Read-Log
-{
+Function Read-Log {
 <#
     .Synopsis
         Reads the latest log file, optionally displaying only the latest number of specified lines
@@ -226,19 +198,16 @@ Function Read-Log
         PS .\> Read-Log
  
         Returns basic file properties, and last 10 lines, of the latest / newest log file found in $loggingPath directory
- 
-    .Example
+     .Example
         PS .\> Read-Log -MessageSource Get-Profile -lineCount 30
  
         Returns latest log file, reading the latest 30 lines, specific to function Get-Profile
- 
-    .Notes
+     .Notes
         NAME: Read-Log
         AUTHOR: Bryan Dady
         VERSION: 1.0
         LASTEDIT: 04/15/2015
- 
-    .Output
+     .Output
         Matches default properties return the same as Get-Item:
         * Name
         * LastWriteTime
@@ -267,34 +236,30 @@ Function Read-Log
     # Use write-output instead of write-log, so that the function of reading log files does not write new log files to be read
     Write-Output -InputObject "Selecting latest log file to read last $lineCount lines"
 
-Write-Output -InputObject "[Debug] Looking for log files with `$MessageSource is $MessageSource" -Debug
+    Write-Output -InputObject "[Debug] Looking for log files with `$MessageSource is $MessageSource" -Debug
     # Select the newest (1) file (most recent LastWriteTime), with an optional filter, based on MessageSource parameter
     $latestLogFile = Get-ChildItem -Path $loggingPath -Filter *$MessageSource* -File |
     Sort-Object -Property LastWriteTime -Descending |
     Select-Object -First 1
 
-Write-Output -InputObject "[Debug] `$latestLogFile is $latestLogFile" -Debug
+    Write-Output -InputObject "[Debug] `$latestLogFile is $latestLogFile" -Debug
 
-    if (Test-Path -Path $latestLogFile -PathType Leaf -IsValid -ErrorAction Ignore)
-    {
+    if (Test-Path -Path $latestLogFile -PathType Leaf -IsValid -ErrorAction Ignore) {
         Write-Output -InputObject "Selected $latestLogFile"
         $latestLogFile |
         Select-Object -Property Name, LastWriteTime |
         Format-List
-        if ($lineCount -gt 0)
-        {
+        if ($lineCount -gt 0) {
             Write-Output -InputObject "`n ... "
             $latestLogFile | Get-Content -Tail $lineCount
             Write-Output -InputObject "`n[EOF]`n"
         }
-    } else
-    {
+    } else {
         Write-Warning -Message "Could not open $latestLogFile for reading"
     }
 } #end function
 
-Function Get-LatestLogs
-{
+Function Get-LatestLogs {
     Get-ChildItem -Path $loggingPath |
     Sort-Object -Descending -Property LastWriteTime |
     Select-Object -First 10
