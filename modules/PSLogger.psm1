@@ -57,22 +57,15 @@ Function Write-Log {
     .Parameter Path
         The filename and path for the log file. The default is defined as $loggingPath (above)
         If $logFilePref variable is (bound) and passed into the Write-Log function, then that override path value will be used.
- 
     .EXAMPLE
         PS .\>Write-Log -Message "Test Message ... this is a test of the Write-Log function" -Function TEST
- 
     .EXAMPLE
         PS .\>Write-Log -Message "Test Message ... this is another test of the Write-Log function, to a custom specified path" -Function TEST -Path $env:TEMP\testing.log
- 
     .Notes
         NAME: Write-Log
-        AUTHOR: Bryan Dady, adapted from original work by Jeffery Hicks
+        AUTHOR: Henk van Malsen
         VERSION: 1.3.5
-        LASTEDIT: 11/16/2015
- 
-    .Link
-        http://jdhitsolutions.com/blog/2011/03/powershell-automatic-logging/
- 
+        LASTEDIT: 06-02-2020
     .Link
         Write-Verbose
 #>
@@ -191,23 +184,23 @@ Function Read-Log {
         The message source is an optional parameter that specifies which module, function, or script wrote the log file to be retrieved.
         If this parameter is not specified, function returns the latest available log file, regardless of message source.
         The value of this parameter becomes a filter to the search of .log files within the $loggingPath directory.
-        .Parameter lineCount
+    .Parameter lineCount
         The most recent number of lines from the log file in question.
         unless the $logFilePref variable is found. If so, then this value will be used.
     .Example
         PS .\> Read-Log
  
         Returns basic file properties, and last 10 lines, of the latest / newest log file found in $loggingPath directory
-     .Example
+    .Example
         PS .\> Read-Log -MessageSource Get-Profile -lineCount 30
  
         Returns latest log file, reading the latest 30 lines, specific to function Get-Profile
-     .Notes
+    .Notes
         NAME: Read-Log
-        AUTHOR: Bryan Dady
+        AUTHOR: Henk van Malsen
         VERSION: 1.0
-        LASTEDIT: 04/15/2015
-     .Output
+        LASTEDIT: 06-02-2020
+    .Output
         Matches default properties return the same as Get-Item:
         * Name
         * LastWriteTime
