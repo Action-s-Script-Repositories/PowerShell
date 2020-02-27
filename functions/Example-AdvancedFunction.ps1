@@ -29,7 +29,7 @@ $true or $false to force the action; defaults to $false
         )]
         [string][validateset("Restart","LogOff","Shutdown","PowerOff")]$action,
 
-        [boolean]$force = $false
+        [switch]$force
     )
 
     BEGIN {
@@ -52,7 +52,7 @@ $true or $false to force the action; defaults to $false
         }
 
         # to force, add 4 to the value
-        if ($force) {
+        if ($force.IsPresent) {
             $_action += 4
         }
 
