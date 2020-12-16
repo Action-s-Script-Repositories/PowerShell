@@ -18,7 +18,7 @@ function Set-NTFS {
     $propagation = 'None'
     $type = 'Allow'
 
-    $ACE = New-Object System.Security.AccessControl.FileSystemAccessRule($identity,$accessrights,$inheritance,$propagation, $type)
+    $ACE = New-Object System.Security.AccessControl.FileSystemAccessRule($identity,$rights,$inheritance,$propagation, $type)
 
     $Acl = Get-Acl -Path $folder
     $Acl.AddAccessRule($ACE)
