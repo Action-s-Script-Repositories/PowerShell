@@ -1,3 +1,8 @@
+param(
+    [Parameter(Mandatory=$false)]
+    [switch]$Uninstall
+)
+
 $RunDirectory = $PSScriptRoot # If file is run as ps1, this will be populated with the script directory
 if([string]::IsNullOrEmpty($runDirectory)) { $runDirectory = Get-Location | Select-Object -ExpandProperty Path } # If $runDirectory is empty, code snippets probably run, so variable will be populated throug Get-Location (make sure your terminal is in the directory where the script file is located)
 
@@ -11,23 +16,23 @@ function Write-Log {
     [CmdletBinding()] 
     Param ( 
         [Parameter(Mandatory=$true, 
-                   ValueFromPipelineByPropertyName=$true)] 
+                ValueFromPipelineByPropertyName=$true)] 
         [ValidateNotNullOrEmpty()] 
         [Alias("LogContent")] 
         [string]$Message, 
- 
+
         [Parameter(Mandatory=$false)] 
         [Alias('LogPath')] 
         [string]$Path="$($PSScriptRoot)\PowerShellLog.log", 
-         
+        
         [Parameter(Mandatory=$false)] 
         [ValidateSet("Error","Warn","Info")] 
         [string]$Level="Info", 
-         
+        
         [Parameter(Mandatory=$false)] 
         [switch]$NoClobber 
     ) 
- 
+
     Begin { 
         ## Use -Verbose when calling the function to get verbose messages to show
 
@@ -100,42 +105,55 @@ $ConfigPath = "C:\ProgramData\Sophos\AutoUpdate\Config"
 $ConfigFile = "iconn.cfg"
 $BackupFile = "iconnBackUp.cfg"
 
-if(!(test-path $DefaultConfigPath)) {
-    Write-Log -Message "`"$($DefaultConfigPath)`" not found. Creating..." -Level "Warn"
-    try {
-        New-Item -Path $DefaultConfigPath -ItemType Directory -Force -Confirm:$false -ErrorAction stop
-        Write-Log -Message "`"$($DefaultConfigPath)`" created successfully" -Level "Info"
+if($Uninstall.IsPresent) {
+    Write-Log -Message "Uninstall detected." -Level "Info"
+    try{
+        Copy-Item -Path "$($DefaultConfigPath)\$($BackupFile)" -Destination "$($ConfigPath)\$ConfigFile)" -Force -Confirm:$false -ErrorAction stop
+        Write-Log -Message "`"$($DefaultConfigPath)\$($BackupFile)`" restored successfully" -Level "Info"
     } catch [EXCEPTION] {
-        Write-Log -Message "Failed to create `"$($DefaultConfigPath)`"" -Level "Error"
+        Write-Log -Message "Failed to restore `"$($DefaultConfigPath)\$($BackupFile)`"" -Level "Error"
         Write-Log -Message "Stacktrace:"
         Write-Log -Message $_ -Level "Error"
-        Exit 99
+        Exit 100
     }
-}
-
-if(test-path "$($ConfigPath)\$($ConfigFile)") {
-    Write-Log -Message "`"$($ConfigPath)\$($ConfigFile)`" found. Creating backup..." -Level "Info"
-    try {
-        Copy-Item -Path "$($ConfigPath)\$($ConfigFile)" -Destination "$($DefaultConfigPath)\$($BackupFile)" -Force -Confirm:$false -ErrorAction stop
-        Write-Log -Message "`"$($ConfigPath)\$($ConfigFile)`" copied successfully." -Level "Info"
-    } catch [EXCEPTION] {
-        Write-Log -Message "Failed to ccopy `"$($ConfigPath)\$($ConfigFile)`"" -Level "Error"
-        Write-Log -Message "Stacktrace:"
-        Write-Log -Message $_ -Level "Error"
-        Exit 98
+} else {
+    if(!(test-path $DefaultConfigPath)) {
+        Write-Log -Message "`"$($DefaultConfigPath)`" not found. Creating..." -Level "Warn"
+        try {
+            New-Item -Path $DefaultConfigPath -ItemType Directory -Force -Confirm:$false -ErrorAction stop
+            Write-Log -Message "`"$($DefaultConfigPath)`" created successfully" -Level "Info"
+        } catch [EXCEPTION] {
+            Write-Log -Message "Failed to create `"$($DefaultConfigPath)`"" -Level "Error"
+            Write-Log -Message "Stacktrace:"
+            Write-Log -Message $_ -Level "Error"
+            Exit 99
+        }
     }
-}
 
-if(test-path "$($runDirectory)\$($ConfigFile)") {
-    Write-Log -Message "`"$($runDirectory)\$($ConfigFile)`" found. Copying correct config..." -Level "Info"
-    try {
-        Copy-Item -Path "$($runDirectory)\$($ConfigFile)" -Destination "$($ConfigPath)\$($BackupFile)" -Force -Confirm:$false
-        Write-Log -Message "`"$($runDirectory)\$($ConfigFile)`" copied successfully." -Level "Info"
-    } catch [EXCEPTION] {
-        Write-Log -Message "Failed to ccopy `"$($runDirectory)\$($ConfigFile)`"" -Level "Error"
-        Write-Log -Message "Stacktrace:"
-        Write-Log -Message $_ -Level "Error"
-        Exit 97
+    if(test-path "$($ConfigPath)\$($ConfigFile)") {
+        Write-Log -Message "`"$($ConfigPath)\$($ConfigFile)`" found. Creating backup..." -Level "Info"
+        try {
+            Copy-Item -Path "$($ConfigPath)\$($ConfigFile)" -Destination "$($DefaultConfigPath)\$($BackupFile)" -Force -Confirm:$false -ErrorAction stop
+            Write-Log -Message "`"$($ConfigPath)\$($ConfigFile)`" copied successfully." -Level "Info"
+        } catch [EXCEPTION] {
+            Write-Log -Message "Failed to ccopy `"$($ConfigPath)\$($ConfigFile)`"" -Level "Error"
+            Write-Log -Message "Stacktrace:"
+            Write-Log -Message $_ -Level "Error"
+            Exit 98
+        }
+    }
+
+    if(test-path "$($runDirectory)\$($ConfigFile)") {
+        Write-Log -Message "`"$($runDirectory)\$($ConfigFile)`" found. Copying correct config..." -Level "Info"
+        try {
+            Copy-Item -Path "$($runDirectory)\$($ConfigFile)" -Destination "$($ConfigPath)\$($BackupFile)" -Force -Confirm:$false
+            Write-Log -Message "`"$($runDirectory)\$($ConfigFile)`" copied successfully." -Level "Info"
+        } catch [EXCEPTION] {
+            Write-Log -Message "Failed to ccopy `"$($runDirectory)\$($ConfigFile)`"" -Level "Error"
+            Write-Log -Message "Stacktrace:"
+            Write-Log -Message $_ -Level "Error"
+            Exit 97
+        }
     }
 }
 
