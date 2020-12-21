@@ -100,6 +100,9 @@ function Write-Log {
     } 
 }
 
+$SophosAutoUpdateDir = "C:\Program Files (x86)\Sophos\AutoUpdate"
+$SophosRepairInstaller = "$($runDirectory)\SophosEndpoint_UMCAVRSP03_Laptop.exe"
+
 $DefaultConfigPath = "C:\ProgramData\Sophos\AutoUpdate\DefaultConfig"
 $ConfigPath = "C:\ProgramData\Sophos\AutoUpdate\Config"
 $ConfigFile = "iconn.cfg"
@@ -117,6 +120,19 @@ if($Uninstall.IsPresent) {
         Exit 100
     }
 } else {
+    if(!(test-Path $SophosAutoUpdateDir)) {
+        Write-Log -Message "Corrupt Sophos installation detected. Attempting repairs..." -Level "Warning"
+        try{
+            Start-Process -FilePath $SophosRepairInstaller -Wait
+            Write-Log -Message "Sophos installation repaired successfully." -Level "Info"
+        } catch [EXCEPTION] {
+        Write-Log -Message "Failed to repair Sophos installation!" -Level "Error"
+            Write-Log -Message "Stacktrace:"
+            Write-Log -Message $_ -Level "Error"
+            Exit 101
+        }
+    }
+    
     if(!(test-path $DefaultConfigPath)) {
         Write-Log -Message "`"$($DefaultConfigPath)`" not found. Creating..." -Level "Warn"
         try {
