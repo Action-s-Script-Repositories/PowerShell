@@ -8,7 +8,7 @@ if([string]::IsNullOrEmpty($runDirectory)) { $runDirectory = Get-Location | Sele
 
 $curDate = Get-Date -format "yyyy-MM-dd HHmmss"
 
-$LogPath = "C:\temp\"
+$LogPath = "C:\temp"
 if(!(test-path $LogPath)) { New-Item -Path $LogPath -ItemType Directory -Force -Confirm:$false }
 $LogFile = "$($LogPath)\$($curDate)_SophosUpdate.log"
 
