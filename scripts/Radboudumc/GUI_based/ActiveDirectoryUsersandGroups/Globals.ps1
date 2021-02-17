@@ -94,6 +94,9 @@ function Set-UILanguage ($Culture)
 		$SSSettingFormControls = 'Initialiseren besturingselementen'
 		$SSSettingUILanguage = 'Taal instellen'
 		$SSConfiguringRemotePSSession = 'PS-remoting sessie configureren'
+		$SSRefreshingMembership = 'Groeplidmaatschap verversen...'
+		$SSSearchingGroups = 'Groepen zoeken...'
+		$SSSearchingUsers = 'Gebruikers zoeken...'
 		
 		$ButtonSearch = "&Zoeken"
 		$ButtonAdd = "&Toevoegen"
@@ -129,7 +132,7 @@ function Set-UILanguage ($Culture)
 		$AFbtnCancel = "&Annuleren"
 		$AFbtnRetrieve = "&Ophalen"
 		$AFNoADGroup = 'Geen groepsnaam ingegeven.'
-		$AFADGroupFound = 'Groep(en) gevonden.'
+		$AFADGroupFound = 'Groep(en) gevonden:'
 		$AFADGroupInvalid = 'Geen groep(en) gevonden.'
 		$AFGroupsFound = 'Gevonden groep(en):'
 		$AFGroupsToBeAdded = 'Groep(en) toe te voegen:'
@@ -155,7 +158,7 @@ function Set-UILanguage ($Culture)
 		$AUFormName = 'Active Directory Groepen - Gebruiker(s) toevoegen'
 		$AUlblADUser = 'AD gebruiker:'
 		$AUNoADUser = 'Geen gebruikersnaam ingegeven.'
-		$AUUserFound = 'Gebruiker(s) gevonden.'
+		$AUUserFound = 'Gebruiker(s) gevonden:'
 		$AUADUserInvalid = 'Geen gebruiker(s) gevonden.'
 		$AUUsersFound = 'Gevonden gebruiker(s):'
 		$AUUsersToBeAdded = 'Gebruiker(s) toe te voegen:'
@@ -242,12 +245,13 @@ function Set-UILanguage ($Culture)
 		$VBButtonNotImplemented = 'Deze knop is nog niet geïmplementeerd.'
 		$VBNoCBContent = 'Het klembord is leeg.'
 		$VBCBPasted = 'Klembordinhoud geplakt.'
-		$VBTooFewChar = "Te weining karakters ingegeven:`r`n`tGebruikersnaam: minimaal 2`r`n`tNaam gebruiker: minimaal 4`r`n`tFunctie gebruiker: minimaal 4`r`n`tGroepsnaam: minimaal 4`r`n"
+		$VBTooFewChar = "Te weining karakters ingegeven:`r`n`tGebruikersnaam: minimaal 2`r`n`tGroepsnaam: minimaal 4`r`n"
 		
 		#### Users Tab
 		$VBNoUserName = 'Vul alsjeblieft een gebruikersnaam in waarop je wilt zoeken.'
 		$VBNoUserFound = 'Geen gebruiker gevonden met de volgende gebruikersnaam'
 		$VBNoGroup = 'Geen groep(en) geselecteerd. Selecteer 1 of meerdere groepen.'
+		$VBUsersToBeDeleted = 'De volgende gebruikers zullen verwijderd worden uit de opgegeven groep:'
 		$VBGroupsToBeDeleted = 'De gebruiker zal verwijderd worden uit de volgende groep(en):'
 		
 		$VBRemovingUser = 'Gebruiker verwijderen uit de groep'
@@ -303,6 +307,9 @@ function Set-UILanguage ($Culture)
 		$SSSettingFormControls = 'Steuerelemente initialisieren'
 		$SSSettingUILanguage = 'Sprache festlegen'
 		$SSConfiguringRemotePSSession = 'PS-Remoting-Sitzung konfigurieren'
+		$SSRefreshingMembership = 'Gruppenmitgliedschaft aktualisieren...'
+		$SSSearchingGroups = 'Gruppen suchen...'
+		$SSSearchingUsers = 'Benutzers suchen...'
 		
 		### General Form Controls
 		$FormLabel = "Active Directory Benutzer und Gruppen v$($VersionNumber) - $($OrgName)"
@@ -368,7 +375,7 @@ function Set-UILanguage ($Culture)
 		$AUFormName = 'Active Directory-Gruppen - Benutzer hinzufügen'
 		$AUlblADUser = 'AD-Benutzer:'
 		$AUNoADUser = 'Kein Benutzername eingegeben.'
-		$AUUserFound = 'Benutzer gefunden.'
+		$AUUserFound = 'Benutzer gefunden:'
 		$AUADUserInvalid = 'Keine Benutzer gefunden.'
 		$AUUsersFound = 'Benutzer gefunden:'
 		$AUUsersToBeAdded = 'Benutzer hinzufügen:'
@@ -454,12 +461,13 @@ function Set-UILanguage ($Culture)
 		$VBButtonNotImplemented = 'Diese Schaltfläche wurde noch nicht implementiert.'
 		$VBNoCBContent = 'Die Zwischenablage ist leer.'
 		$VBCBPasted = 'Inhalt der Zwischenablage eingefügt.'
-		$VBTooFewChar = "Es wurden zu wenige Zeichen eingegeben:`r`n`tBenutzernamen: mindestens 2`r`n`tNamen eines Benutzers: mindestens 4`r`n`tFunktion eines Benutzers: mindestens 4`r`n`tGruppennamen: mindestens 4`r`n"
+		$VBTooFewChar = "Es wurden zu wenige Zeichen eingegeben:`r`n`tBenutzernamen: mindestens 2`r`n`tGruppennamen: mindestens 4`r`n"
 		
 		#### Users Tab
 		$VBNoUserName = 'Bitte geben Sie einen Benutzernamen ein, nach dem Sie suchen möchten.'
 		$VBNoUserFound = 'Kein Benutzer mit folgendem Benutzernamen gefunden'
 		$VBNoGroup = 'Keine Gruppe(n) ausgewählt. Wählen Sie eine oder mehrere Gruppen aus.'
+		$VBUsersToBeDeleted = 'Die folgenden Benutzer werden aus der angegebenen Gruppe entfernt:'
 		$VBGroupsToBeDeleted = 'Der Benutzer wird aus den folgenden Gruppe(n) entfernt:'
 		
 		$VBRemovingUser = 'Benutzer aus Gruppe entfernen'
@@ -519,6 +527,9 @@ function Set-UILanguage ($Culture)
 		$SSSettingFormControls = 'initializing form controls'
 		$SSSettingUILanguage = 'setting language'
 		$SSConfiguringRemotePSSession = 'configuring PS-Remoting session'
+		$SSRefreshingMembership = 'Refreshing group membership'
+		$SSSearchingGroups = 'Searching groups...'
+		$SSSearchingUsers = 'Searching users...'
 		
 		$ButtonSearch = "&Search"
 		$ButtonAdd = "&Add"
@@ -554,7 +565,7 @@ function Set-UILanguage ($Culture)
 		$AFbtnCancel = "&Cancel"
 		$AFbtnRetrieve = "&Retrieve"
 		$AFNoADGroup = 'No group name entered.'
-		$AFADGroupFound = 'Found group(s).'
+		$AFADGroupFound = 'Found group(s):'
 		$AFADGroupInvalid = 'No group(s) found.'
 		$AFGroupsFound = 'Group(s) found:'
 		$AFGroupsToBeAdded = 'Group(s) to be added:'
@@ -580,7 +591,7 @@ function Set-UILanguage ($Culture)
 		$AUFormName = 'Active Directory Groups - Add user(s)'
 		$AUlblADUser = 'AD User:'
 		$AUNoADUser = 'No username entered.'
-		$AUUserFound = 'User(s) found.'
+		$AUUserFound = 'User(s) found:'
 		$AUADUserInvalid = 'No user(s) found.'
 		$AUUsersFound = 'Found user(s):'
 		$AUUsersToBeAdded = 'Add User(s):'
@@ -666,12 +677,13 @@ function Set-UILanguage ($Culture)
 		$VBButtonNotImplemented = 'This button has not been implemented yet.'
 		$VBNoCBContent = 'The clipboard is empty.'
 		$VBCBPasted = 'Clipboard content pasted.'
-		$VBTooFewChar = "Too few characters entered.`r`n`tUsername: at least 2`r`n`tName of a user: at least 4`r`n`tFunction of a user: at least 4`r`n`t Groupname: at least 4`r`n"
+		$VBTooFewChar = "Too few characters entered.`r`n`tUsername: at least 2`r`n`tGroupname: at least 4`r`n"
 		
 		#### Users Tab
 		$VBNoUserName = 'Please enter a username you want to search for.'
 		$VBNoUserFound = 'No user found with the following username'
-		$VBNoGroup = 'No group(s) selected. Select 1 or more groups. '
+		$VBNoGroup = 'No group(s) selected. Select 1 or more groups.'
+		$VBUsersToBeDeleted = 'The following users will be removed from the specified group:'
 		$VBGroupsToBeDeleted = 'The user will be removed from the following group(s):'
 
 		$VBRemovingUser = 'Remove user from group'
@@ -731,6 +743,9 @@ function Set-UILanguage ($Culture)
 		SSSettingFormControls		 = $SSSettingFormControls
 		SSSettingUILanguage			 = $SSSettingUILanguage
 		SSConfiguringRemotePSSession = $SSConfiguringRemotePSSession
+		SSRefreshingMembership		 = $SSRefreshingMembership
+		SSSearchingGroups		     = $SSSearchingGroups
+		SSSearchingUsers		     = $SSSearchingUsers
 		ButtonSearch				 = $ButtonSearch
 		ButtonAdd				     = $ButtonAdd
 		ButtonRemove				 = $ButtonRemove
@@ -844,6 +859,7 @@ function Set-UILanguage ($Culture)
 		VBNoUserName				 = $VBNoUserName
 		VBNoUserFound			     = $VBNoUserFound
 		VBNoGroup				     = $VBNoGroup
+		VBUsersToBeDeleted			 = $VBUsersToBeDeleted
 		VBGroupsToBeDeleted		     = $VBGroupsToBeDeleted
 		VBRemovingUser			     = $VBRemovingUser
 		VBRemovingUserSuccess	     = $VBRemovingUserSuccess
@@ -892,6 +908,380 @@ function Set-UILanguage ($Culture)
 	
 	return $LanguageObject
 	#endregion Export Variable Strings
+}
+
+function Get-ADUserObject
+{
+	Param (
+		[Parameter(Mandatory = $true)]
+		[string]$Search,
+		[Parameter(Mandatory = $true)]
+		[string]$FilterType
+	)
+	
+	if ($RemoteADModule)
+	{
+		$UserCount = Invoke-Command -Session $Session -ScriptBlock {
+			Param ($search,
+				$filter)
+			Import-Module ActiveDirectory
+			Get-ADUser -Filter { $filter -like $search } -Properties * -ErrorAction Stop | Sort-Object SamAccountName
+		} -ArgumentList $Search, $FilterType
+		#Write-Host "Remote PowerShell"
+	}
+	else
+	{
+		$UserCount = Get-ADUser -Filter { $FilterType -like $Search } -Properties * -ErrorAction Stop | Sort-Object SamAccountName
+		#Write-Host "Native PowerShell"
+	}
+	
+	return $UserCount
+}
+
+function Get-ADGroupObject
+{
+	Param (
+		[Parameter(Mandatory = $true)]
+		[string]$Search,
+		[Parameter(Mandatory = $true)]
+		[string]$FilterType		
+	)
+	
+	if ($RemoteADModule)
+	{
+		$GroupCount = Invoke-Command -Session $Session -ScriptBlock {
+			Param ($search,
+				$filter)
+			Import-Module ActiveDirectory
+			Get-ADGroup -Filter { $filter -like $search } -Properties * -ErrorAction Stop | Sort-Object Name
+		} -ArgumentList $Search, $FilterType
+		#Write-Host "Remote PowerShell"
+	}
+	else
+	{
+		$GroupCount = Get-ADGroup -Filter { $FilterType -like $Search } -Properties * -ErrorAction Stop | Sort-Object Name
+		#Write-Host "Native PowerShell"
+	}
+	
+	return $GroupCount
+}
+
+function Get-ADGroupMemberObject
+{
+	Param (
+		[Parameter(Mandatory = $true)]
+		[string]$Search
+	)
+	
+	if ($RemoteADModule)
+	{
+		$GroupMemberCount = Invoke-Command -Session $Session -ScriptBlock {
+			Param ($search)
+			Import-Module ActiveDirectory
+			Get-ADGroupMember -Identity $search -ErrorAction Stop | Sort-Object Name
+		} -ArgumentList $Search
+		#Write-Host "Remote PowerShell"
+	}
+	else
+	{
+		$GroupMemberCount = Get-ADGroupMember -Identity $Search -ErrorAction Stop | Sort-Object Name
+		#Write-Host "Native PowerShell"
+	}
+	
+	return $GroupMemberCount
+}
+
+function Add-ADUserToGroup
+{
+	Param (
+		[Parameter(Mandatory = $true)]
+		[string]$GroupName,
+		[Parameter(Mandatory = $true)]
+		[string]$UserName
+	)
+	
+	if ($RemoteADModule)
+	{
+		$CmdOutput = Invoke-Command -Session $Session -ScriptBlock {
+			param ($group,
+				$user)
+			$VerbosePreference = 'Continue'
+			Import-Module ActiveDirectory
+			try
+			{
+				Add-ADGroupMember -Identity $group -Members $user -ErrorAction Stop
+				return $true
+			}
+			catch
+			{
+				return $_
+			}
+		} -ArgumentList $GroupName, $UserName
+	}
+	else
+	{
+		try
+		{
+			Add-ADGroupMember -Identity $GroupName -Members $UserName -ErrorAction Stop
+			$CmdOutput = $true
+		}
+		catch
+		{
+			$CmdOutput = $_
+		}
+	}
+	
+	return $CmdOutput
+}
+
+function Remove-ADUserFromGroup
+{
+	Param (
+		[Parameter(Mandatory = $true)]
+		[string]$GroupName,
+		[Parameter(Mandatory = $true)]
+		[string]$UserName
+	)
+	
+	if ($RemoteADModule)
+	{
+		$CmdOutput = Invoke-Command -Session $Session -ScriptBlock {
+			param ($group,
+				$user)
+			$VerbosePreference = 'Continue'
+			Import-Module ActiveDirectory
+			try
+			{
+				Remove-ADGroupMember -Identity $group -Members $user -Confirm:$false -ErrorAction Stop
+				return $true
+			}
+			catch
+			{
+				return $_
+			}
+		} -ArgumentList $GroupName, $UserName
+	}
+	else
+	{
+		try
+		{
+			Remove-ADGroupMember -Identity $GroupName -Members $UserName -Confirm:$false -ErrorAction Stop
+			$CmdOutput = $true
+		}
+		catch
+		{
+			$CmdOutput = $_
+		}
+	}
+	
+	return $CmdOutput
+}
+
+function Update-ListBox
+{
+<#
+	.SYNOPSIS
+		This functions helps you load items into a ListBox or CheckedListBox.
+	
+	.DESCRIPTION
+		Use this function to dynamically load items into the ListBox control.
+	
+	.PARAMETER ListBox
+		The ListBox control you want to add items to.
+	
+	.PARAMETER Items
+		The object or objects you wish to load into the ListBox's Items collection.
+	
+	.PARAMETER DisplayMember
+		Indicates the property to display for the items in this control.
+		
+	.PARAMETER ValueMember
+		Indicates the property to use for the value of the control.
+	
+	.PARAMETER Append
+		Adds the item(s) to the ListBox without clearing the Items collection.
+	
+	.EXAMPLE
+		Update-ListBox $ListBox1 "Red", "White", "Blue"
+	
+	.EXAMPLE
+		Update-ListBox $listBox1 "Red" -Append
+		Update-ListBox $listBox1 "White" -Append
+		Update-ListBox $listBox1 "Blue" -Append
+	
+	.EXAMPLE
+		Update-ListBox $listBox1 (Get-Process) "ProcessName"
+	
+	.NOTES
+		Additional information about the function.
+#>
+	
+	param
+	(
+		[Parameter(Mandatory = $true)]
+		[ValidateNotNull()]
+		[System.Windows.Forms.ListBox]$ListBox,
+		[Parameter(Mandatory = $true)]
+		[ValidateNotNull()]
+		$Items,
+		[Parameter(Mandatory = $false)]
+		[string]$DisplayMember,
+		[Parameter(Mandatory = $false)]
+		[string]$ValueMember,
+		[switch]$Append
+	)
+	
+	if (-not $Append)
+	{
+		$ListBox.Items.Clear()
+	}
+	
+	if ($Items -is [System.Windows.Forms.ListBox+ObjectCollection] -or $Items -is [System.Collections.ICollection])
+	{
+		$ListBox.Items.AddRange($Items)
+	}
+	elseif ($Items -is [System.Collections.IEnumerable])
+	{
+		$ListBox.BeginUpdate()
+		foreach ($obj in $Items)
+		{
+			$ListBox.Items.Add($obj)
+		}
+		$ListBox.EndUpdate()
+	}
+	else
+	{
+		$ListBox.Items.Add($Items)
+	}
+	
+	$ListBox.DisplayMember = $DisplayMember
+	$ListBox.ValueMember = $ValueMember
+}
+
+function Show-SplashScreen
+{
+	<#
+	.SYNOPSIS
+		Displays a splash screen using the specified image.
+	
+	.PARAMETER Image
+		Mandatory Image object that is displayed in the splash screen.
+	
+	.PARAMETER Title
+		(Optional) Sets a title for the splash screen window. 
+	
+	.PARAMETER Timeout
+		The amount of seconds before the splash screen is closed.
+		Set to 0 to leave the splash screen open indefinitely.
+		Default: 2
+	
+	.PARAMETER ImageLocation
+		The file path or url to the image.
+
+	.PARAMETER PassThru
+		Returns the splash screen form control. Use to manually close the form.
+	
+	.PARAMETER Modal
+		The splash screen will hold up the pipeline until it closes.
+
+	.EXAMPLE
+		PS C:\> Show-SplashScreen -Image $Image -Title 'Loading...' -Timeout 3
+
+	.EXAMPLE
+		PS C:\> Show-SplashScreen -ImageLocation 'C:\Image\MyImage.png' -Title 'Loading...' -Timeout 3
+
+	.EXAMPLE
+		PS C:\> $splashScreen = Show-SplashScreen -Image $Image -Title 'Loading...' -PassThru
+				#close the splash screen
+				$splashScreen.Close()
+	.OUTPUTS
+		System.Windows.Forms.Form
+	
+	.NOTES
+		Created by SAPIEN Technologies, Inc.
+
+		The size of the splash screen is dependent on the image.
+		The required assemblies to use this function outside of a WinForms script:
+		Add-Type -AssemblyName System.Windows.Forms
+		Add-Type -AssemblyName System.Drawing
+#>
+	[OutputType([System.Windows.Forms.Form])]
+	param
+	(
+		[Parameter(ParameterSetName = 'Image',
+				   Mandatory = $true,
+				   Position = 1)]
+		[ValidateNotNull()]
+		[System.Drawing.Image]$Image,
+		[Parameter(Mandatory = $false)]
+		[string]$Title,
+		[int]$Timeout = 2,
+		[Parameter(ParameterSetName = 'ImageLocation',
+				   Mandatory = $true,
+				   Position = 1)]
+		[ValidateNotNullOrEmpty()]
+		[string]$ImageLocation,
+		[switch]$PassThru,
+		[switch]$Modal
+	)
+	
+	#Create a splash screen form to display the image.
+	$splashForm = New-Object System.Windows.Forms.Form
+	
+	#Create a picture box for the image
+	$pict = New-Object System.Windows.Forms.PictureBox
+	
+	if ($Image)
+	{
+		$pict.Image = $Image;
+	}
+	else
+	{
+		$pict.Load($ImageLocation)
+	}
+	
+	$pict.AutoSize = $true
+	$pict.Dock = 'Fill'
+	$splashForm.Controls.Add($pict)
+	
+	#Display a title if defined.
+	if ($Title)
+	{
+		$splashForm.Text = $Title
+		$splashForm.FormBorderStyle = 'FixedDialog'
+	}
+	else
+	{
+		$splashForm.FormBorderStyle = 'None'
+	}
+	
+	#Set a timer
+	if ($Timeout -gt 0)
+	{
+		$timer = New-Object System.Windows.Forms.Timer
+		$timer.Interval = $Timeout * 1000
+		$timer.Tag = $splashForm
+		$timer.add_Tick({
+				$this.Tag.Close();
+				$this.Stop()
+			})
+		$timer.Start()
+	}
+	
+	#Show the form
+	$splashForm.AutoSize = $true
+	$splashForm.AutoSizeMode = 'GrowAndShrink'
+	$splashForm.ControlBox = $false
+	$splashForm.StartPosition = 'CenterScreen'
+	$splashForm.TopMost = $true
+	
+	if ($Modal) { $splashForm.ShowDialog() }
+	else { $splashForm.Show() }
+	
+	if ($PassThru)
+	{
+		return $splashForm
+	}
 }
 #endregion
 

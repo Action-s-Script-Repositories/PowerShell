@@ -125,7 +125,7 @@ function Set-UILanguage ($Culture)
 		$Language = 'Dutch'
 		
 		### Form Controls
-		$FormLabel = "Blokkeer spam`/phishing-e-mails v$($VersionNumber) - $($OrgName)"
+		$FormLabel = "Blokkeren spam-`/phishing e-mails v$($VersionNumber) - $($OrgName)"
 		
 		$ButtonCheck = "&Controleer"
 		$ButtonBlock = "&Blokkeren"
@@ -200,7 +200,7 @@ function Set-UILanguage ($Culture)
 		$Language = 'German'
 		
 		### Form Controls
-		$FormLabel = "Blockieren Spam-`/Phishing-E-Mails v$($VersionNumber) - $($OrgName)"
+		$FormLabel = "Blockieren Spam-`/Phishing E-Mails v$($VersionNumber) - $($OrgName)"
 		$ButtonCheck = "&Prüfen"
 		$ButtonBlock = "&Block"
 		$ButtonAgain = "&Nochmal"
@@ -274,7 +274,7 @@ function Set-UILanguage ($Culture)
 		$Language = 'English'
 		
 		### Form Controls
-		$FormLabel = "Block Spam`/Phishing Emails v$($VersionNumber) - $($OrgName)"
+		$FormLabel = "Block Spam-`/Phishing Emails v$($VersionNumber) - $($OrgName)"
 		
 		$ButtonCheck = "&Check"
 		$ButtonBlock = "&Block"
