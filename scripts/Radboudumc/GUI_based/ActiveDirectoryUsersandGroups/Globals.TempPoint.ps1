@@ -94,16 +94,10 @@ function Set-UILanguage ($Culture)
 		$SSSettingFormControls = 'Initialiseren besturingselementen'
 		$SSSettingUILanguage = 'Taal instellen'
 		$SSConfiguringRemotePSSession = 'PS-remoting sessie configureren'
-		$STSRefreshingMembership = 'Groeplidmaatschappen verversen...'
-		$STSSearchingGroups = 'Groep(en) zoeken...'
-		$STSRemovingGroups = 'Groep(en) verwijderen...'
-		$STSAddingGroups = 'Groep(en) toevoegen...'
-		$STSSearchingUsers = 'Gebruiker(s) zoeken...'
-		$STSRemovingUsers = 'Gebruiker(s) verwijderen...'
-		$STSAddingUsers = 'Gebruiker(s) toevoegen...'
-		$STSDone = 'Afgemaakt'
-		$STSReady = 'Klaar'
-				
+		$SSRefreshingMembership = 'Groeplidmaatschap verversen...'
+		$SSSearchingGroups = 'Groepen zoeken...'
+		$SSSearchingUsers = 'Gebruikers zoeken...'
+		
 		$ButtonSearch = "&Zoeken"
 		$ButtonAdd = "&Toevoegen"
 		$ButtonRemove = "&Verwijderen"
@@ -129,30 +123,22 @@ function Set-UILanguage ($Culture)
 		$LabelSamAccountName = 'Gebruikersnaam:'
 		$LabelUserPrincipalName = 'User Principal Naam:'
 		$LabelEmailAddress = 'Emailadres:'
-		$LabelGroupMembers = 'Aantal groepen:'
 		$GroupUserDetails = 'Gebruikersdetails'
 		
-		##### Add Form
+		##### Add Group to User Form
+		$AFFormName = 'Active Directory Gebruikers - Groep(en) toevoegen'
+		$AFlblADGroup = 'AD groep:'
 		$AFbtnAdd = "&Toevoegen"
 		$AFbtnCancel = "&Annuleren"
 		$AFbtnRetrieve = "&Ophalen"
-		$AFFormNameGroups = 'Active Directory Gebruikers - Groep(en) toevoegen'
-		$AFlblADGroup = 'Groepsnaam:'
 		$AFNoADGroup = 'Geen groepsnaam ingegeven.'
 		$AFADGroupFound = 'Groep(en) gevonden:'
 		$AFADGroupInvalid = 'Geen groep(en) gevonden.'
 		$AFGroupsFound = 'Gevonden groep(en):'
 		$AFGroupsToBeAdded = 'Groep(en) toe te voegen:'
-		$AFFormNameUsers = 'Active Directory Gebruikers - Gebruiker(s) toevoegen'
-		$AFlblADUser = 'Gebruikersnaam'
-		$AFNoADUser = 'Geen gebruikersnaam ingegeven.'
-		$AFUserFound = 'Gebruiker(s) gevonden:'
-		$AFADUserInvalid = 'Geen gebruiker(s) gevonden.'
-		$AFUsersFound = 'Gevonden gebruiker(s):'
-		$AFUsersToBeAdded = 'Gebruiker(s) toe te voegen:'
 		
 		#### Groups Tab
-		$GRPLabelGroupname = 'Naam:'
+		$GRPLabelGroupname = 'Groepsnaam:'
 		$GRPLabelGroupCategory = 'Groep categorie:'
 		$GRPLabelGroupScope = 'Groepsbereik:'
 		$GRPLabelGroupInfo = 'Groep info:'
@@ -168,6 +154,15 @@ function Set-UILanguage ($Culture)
 		$SGbtnCancel = "&Annuleren"
 		$SGbtnOK = "&OK"
 		
+		##### Add User to Group Form
+		$AUFormName = 'Active Directory Groepen - Gebruiker(s) toevoegen'
+		$AUlblADUser = 'AD gebruiker:'
+		$AUNoADUser = 'Geen gebruikersnaam ingegeven.'
+		$AUUserFound = 'Gebruiker(s) gevonden:'
+		$AUADUserInvalid = 'Geen gebruiker(s) gevonden.'
+		$AUUsersFound = 'Gevonden gebruiker(s):'
+		$AUUsersToBeAdded = 'Gebruiker(s) toe te voegen:'
+				
 		### Tooltip text
 		#### General Form Controls
 		$TTcmbLanguage = 'Hier kan de formulier taal gekozen worden.'
@@ -184,7 +179,10 @@ function Set-UILanguage ($Culture)
 		$TTbtnExport = 'Deze actie exporteert de geselecteerde groep(en) naar een bestand.'
 		$TTlstADGroups = 'Dit scherm zal de huidige groepen laten zien waarvan de opgegeven gebruiker lid is.'
 		
-		##### Add Form
+		##### Add AD Group Form
+		$TTAddtxtADGroup = 'Vul dit veld in met de AD-groep (of jokerteken) waarnaar u wilt zoeken.'
+		$TTAddlstAddADGroups = "Deze keuzelijst bevat de gevonden groepen, gebaseerd op de zoekcriteria.`r`nDubbelklikken op een groep zal deze naar de andere keuzelijst sturen, zodat hij klaar is om aan de gebruiker toegevoegd te worden.`r`nCtrl+A selecteert alle gevonden groepen.`r`n Door op Ctrl+C te drukken, worden de geselecteerde groepen naar het klembord gekopieerd."
+		$TTAddlstGroupsToBeAdded = "Deze keuzelijst bevat de groepen die klaar zijn om toegevoegd te worden aan de gespecificeerde gebruiker.`r`nDubbelklikken op een groep zal deze verwijderen uit de lijst.`r`nDoor op Ctrl+V te drukken terwijl de keuzelijst is geselecteerd, wordt de inhoud van het klembord geplakt."
 		$TTAddbtnAdd = 'Deze actie loopt door de geselecteerde groepen en voegt ze toe aan de opgegeven gebruiker.'
 		$TTAddbtnCancel = 'Deze actie zal het toevoegen annuleren en het formulier sluiten.'
 		$TTAddbtnAgain = 'Deze actie zal het formulier terugzetten naar de oorspronkelijke staat.'
@@ -192,14 +190,23 @@ function Set-UILanguage ($Culture)
 		$TTAddbtnLeft = "Deze actie zal de geselecteerde groep(en) verwijderen uit de lijst `'Groep(en) toe te voegen`'."
 		$TTAddbtnRight = "Deze actie zal de geselecteerde groep(en) uit de `'Gevonden groep(en)`' lijst toevoegen aan de `'Groep(en) toe te voegen`' lijst."
 		$TTAddrtbAddOutput = 'Dit is het log scherm.'
-		$TTAddtxtADUserorGroup = 'Vul dit veld in met de gebruikers-/groepsnaam (of jokerteken) waarnaar u wilt zoeken.'
-		$TTAddlstAddADUsersorGroups = "Deze keuzelijst bevat de gevonden gebruikers/groepen, gebaseerd op de zoekcriteria.`r`nDubbelklikken op een regel zal deze naar de andere keuzelijst sturen, zodat hij klaar is om aan de toegevoegd te worden.`r`nCtrl+A selecteert alle gevonden gebruikers/groepen.`r`nDoor op Ctrl+C te drukken, worden de geselecteerde regels naar het klembord gekopieerd."
-		$TTAddlstUsersorGroupsToBeAdded = "Deze keuzelijst bevat de gebruiker(s)/groep(en) die klaar zijn om toegevoegd te worden aan de gespecificeerde groep/gebruiker.`r`nDubbelklikken op een regel zal deze verwijderen uit de lijst.`r`nDoor op Ctrl+V te drukken terwijl de keuzelijst is geselecteerd, wordt de inhoud van het klembord geplakt."
 		
 		##### Select Group Form
 		$TTSGbtnCancel = 'Deze actie annuleert de groepsselectie.'
 		$TTSGbtnOK = 'Deze actie zal de gemarkeerde groep gebruiken voor verdere acties.'
 		$TTSGlstSelectObject = "Deze lijst bevat de groepen die zijn gevonden op basis van invoer.`r`n Selecteer een groep om verder te gaan."
+		
+		##### Add AD Group Form
+		$TTAddUtxtADUser = 'Vul dit veld in met de AD-gebruiker (of jokerteken) waarnaar u wilt zoeken.'
+		$TTAddUlstAddADUsers = "Deze keuzelijst bevat de gevonden gebruikers, gebaseerd op de zoekcriteria.`r`nDubbelklikken op een gebruiker zal deze naar de andere keuzelijst sturen, zodat hij klaar is om aan de gebruiker toegevoegd te worden.`r`nCtrl+A selecteert alle gevonden gebruikers.`r`n Door op Ctrl+C te drukken, worden de geselecteerde gebruikers naar het klembord gekopieerd."
+		$TTAddUlstUsersToBeAdded = "Deze keuzelijst bevat de gebruikers die klaar zijn om toegevoegd te worden aan de gespecificeerde groep.`r`nDubbelklikken op een gebruiker zal deze verwijderen uit de lijst.`r`nDoor op Ctrl+V te drukken terwijl de keuzelijst is geselecteerd, wordt de inhoud van het klembord geplakt."
+		$TTAddUbtnAdd = 'Deze actie loopt door de geselecteerde gebruikers en voegt ze toe aan de opgegeven groep.'
+		$TTAddUbtnCancel = 'Deze actie zal het toevoegen annuleren en het formulier sluiten.'
+		$TTAddUbtnAgain = 'Deze actie zal het formulier terugzetten naar de oorspronkelijke staat.'
+		$TTAddUbtnRetrieve = 'Deze actie zoekt naar Active Directory-gebruikers op basis van jouw invoer.'
+		$TTAddUbtnLeft = "Deze actie zal de geselecteerde gebruiker(s) verwijderen uit de lijst `'Gebruiker(s) toe te voegen`'."
+		$TTAddUbtnRight = "Deze actie zal de geselecteerde gebruiker(s) uit de `'Gevonden gebruiker(s)`' lijst toevoegen aan de `'Gebruiker(s) toe te voegen`' lijst."
+		$TTAddUrtbAddOutput = 'Dit is het log scherm.'
 		
 		#### Groups Tab
 		$TTGRPtxtGroupname = 'Vul hier de groepsnaam in van de groep die je wilt opzoeken.'
@@ -218,7 +225,6 @@ function Set-UILanguage ($Culture)
 		$VBWarning = 'WAARSCHUWING:'
 		$VBError = 'FOUT:'
 		$VBSuccess = 'SUCCES:'
-		$VBPRequiredPermissionsMissing = 'De juiste machtigingen ontbreken voor het gebruik van deze applicatie. Neem contact op met de Systeembeheer.'
 		$VBModuleCheck = 'Controleren op'
 		$VBModule = 'module'
 		$VBModuleAlreadyImported = 'module is al geïmporteerd.'
@@ -246,7 +252,6 @@ function Set-UILanguage ($Culture)
 		$VBNoUserFound = 'Geen gebruiker gevonden met de volgende gebruikersnaam'
 		$VBNoGroup = 'Geen groep(en) geselecteerd. Selecteer 1 of meerdere groepen.'
 		$VBUsersToBeDeleted = 'De volgende gebruikers zullen verwijderd worden uit de opgegeven groep:'
-		$VBUserSelectionCancelled = 'Gebruiker selecteren geannuleerd.'
 		$VBGroupsToBeDeleted = 'De gebruiker zal verwijderd worden uit de volgende groep(en):'
 		
 		$VBRemovingUser = 'Gebruiker verwijderen uit de groep'
@@ -262,25 +267,18 @@ function Set-UILanguage ($Culture)
 		$MsgBody = 'Weet je zeker dat u de groep(en) wilt verwijderen?'
 		$MsgBodyExport = 'Wil je alle groepen exporteren?'
 		
-		##### Add Form
+		##### Add Group to User Form
 		$VBGroupToBeAdded = 'Groep toevoegen:'
 		$VBGroupToBeAddedCancelled = 'Groep(en) toevoegen geannuleerd.'
 		$VBGroupToBeAddedSuccess = 'Groep succesvol toegevoegd'
 		$VBGroupToBeAddedFailed = 'Kan groep niet toevoegen'
 		$VBGroupAlreadyAdded = 'Geselecteerde groep is al toegevoegd.'
 		
-		$VBUserToBeAdded = 'Gebruiker toevoegen:'
-		$VBUserToBeAddedCancelled = 'Toevoegen gebruiker(s) geannuleerd.'
-		$VBUserToBeAddedSuccess = 'Gebruiker succesvol toegevoegd.'
-		$VBUserToBeAddedFailed = 'Kan gebruiker niet toevoegen.'
-		$VBUserAlreadyAdded = 'De geselecteerde gebruiker is al toegevoegd.'
-		
 		#### Groups Tab
 		$VBGRPNoGroupName = 'Vul alsjeblieft een groepsnaam in waarop je wilt zoeken.'
 		$VBGRPNoGroupFound = 'Geen groep gevonden met de volgende naam'
 		$VBGRPNoMember = 'Geen lid/leden geselecteerd. Selecteer 1 of meerdere leden.'
 		$VBGRPMembersToBeDeleted = 'De volgende leden zullen verwijderd worden uit de groep:'
-		$VBGroupSelectionCancelled = 'Groep selecteren geannuleerd.'		
 		
 		$VBGRPRemovingMember = 'Verwijderen van lid uit groep'
 		$VBGRPRemovingMemberSuccess = 'Lid succesvol verwijderd uit groep'
@@ -289,6 +287,13 @@ function Set-UILanguage ($Culture)
 		
 		$VBGRPMembersCopied = 'Geselecteerde lid/leden gekopieerd naar klembord.'
 		$VBGRPMembersExported = 'Geselecteerde lid/leden geëxporteerd.'
+		
+		##### Add User to Group Form
+		$VBUserToBeAdded = 'Gebruiker toevoegen:'
+		$VBUserToBeAddedCancelled = 'Toevoegen gebruiker(s) geannuleerd.'
+		$VBUserToBeAddedSuccess = 'Gebruiker succesvol toegevoegd.'
+		$VBUserToBeAddedFailed = 'Kan gebruiker niet toevoegen.'
+		$VBUserAlreadyAdded = 'De geselecteerde gebruiker is al toegevoegd.'
 		
 		$GRPMsgBody = 'Weet je zeker dat je het lid/de leden wilt verwijderen?'
 		$GRPMsgBodyExport = 'Wil je alle leden exporteren?'
@@ -302,15 +307,9 @@ function Set-UILanguage ($Culture)
 		$SSSettingFormControls = 'Steuerelemente initialisieren'
 		$SSSettingUILanguage = 'Sprache festlegen'
 		$SSConfiguringRemotePSSession = 'PS-Remoting-Sitzung konfigurieren'
-		$STSRefreshingMembership = 'Gruppenmitgliedschaft aktualisieren...'
-		$STSSearchingGroups = 'Gruppe(n) suchen...'
-		$STSRemovingGroups = 'Gruppe(e) entfernen...'
-		$STSAddingGroups = 'Gruppe(n) hinzufügen...'
-		$SSSearchingUsers = 'Benutzer(s) suchen...'
-		$STSRemovingUsers = 'Benutzer(s) entfernen...'
-		$STSAddingUsers = 'Benutzer(s) hinzufügen...'
-		$STSDone = 'Fertig'
-		$STSReady = 'Bereit'
+		$SSRefreshingMembership = 'Gruppenmitgliedschaft aktualisieren...'
+		$SSSearchingGroups = 'Gruppen suchen...'
+		$SSSearchingUsers = 'Benutzers suchen...'
 		
 		### General Form Controls
 		$FormLabel = "Active Directory Benutzer und Gruppen v$($VersionNumber) - $($OrgName)"
@@ -341,30 +340,22 @@ function Set-UILanguage ($Culture)
 		$LabelSamAccountName = 'Benutzername:'
 		$LabelUserPrincipalName = 'Benutzerprinzipalname:'
 		$LabelEmailAddress = 'E-Mail-Adresse:'
-		$LabelGroupMembers = 'Anzahl Gruppen:'
 		$GroupUserDetails = 'Benutzerdetails'
 		
-		##### Add Form
+		##### Add Group to User Form
+		$AFFormName = 'Active Directory Benutzer - Gruppe(n) hinzufügen'
+		$AFlblADGroup = 'AD-Gruppe:'
 		$AFbtnAdd = "&Add"
 		$AFbtnCancel = "A&bbrechen"
 		$AFbtnRetrieve = "Ab&rufen"
-		$AFFormNameGroups = 'Active Directory Benutzer - Gruppe(n) hinzufügen'
-		$AFlblADGroup = 'Gruppenname:'
 		$AFNoADGroup = 'Kein Gruppenname eingegeben.'
 		$AFADGroupFound = 'Gruppe(n) gefunden:'
 		$AFADGroupInvalid = 'Keine Gruppe(n) gefunden:'
 		$AFGroupsFound = 'Gruppe(n) gefunden:'
 		$AFGroupsToBeAdded = 'Gruppe(n) hinzufügen:'
-		$AFFormNameUsers = 'Active Directory-Gruppen - Benutzer hinzufügen'
-		$AFlblADUser = 'Benutzername:'
-		$AFNoADUser = 'Kein Benutzername eingegeben.'
-		$AFUserFound = 'Benutzer gefunden:'
-		$AFADUserInvalid = 'Keine Benutzer gefunden.'
-		$AFUsersFound = 'Benutzer gefunden:'
-		$AFUsersToBeAdded = 'Benutzer hinzufügen:'
 		
 		#### Groups Tab
-		$GRPLabelGroupname = 'Name:'
+		$GRPLabelGroupname = 'Gruppenname:'
 		$GRPLabelGroupCategory = 'Gruppenkategorie:'
 		$GRPLabelGroupScope = 'Gruppenbereich:'
 		$GRPLabelGroupInfo = 'Gruppeninfo:'
@@ -379,6 +370,15 @@ function Set-UILanguage ($Culture)
 		$SGFormNameUsers = 'Active Directory Benutzer - Benutzer wählen'
 		$SGbtnCancel = "&Stornieren"
 		$SGbtnOK = "&OK"
+		
+		#### Add User to Group Form
+		$AUFormName = 'Active Directory-Gruppen - Benutzer hinzufügen'
+		$AUlblADUser = 'AD-Benutzer:'
+		$AUNoADUser = 'Kein Benutzername eingegeben.'
+		$AUUserFound = 'Benutzer gefunden:'
+		$AUADUserInvalid = 'Keine Benutzer gefunden.'
+		$AUUsersFound = 'Benutzer gefunden:'
+		$AUUsersToBeAdded = 'Benutzer hinzufügen:'
 		
 		### ToolTip Text
 		#### General Form Controls
@@ -396,7 +396,10 @@ function Set-UILanguage ($Culture)
 		$TTbtnExport = 'Diese Aktion exportiert die ausgewählten Gruppen in eine Datei.'
 		$TTlstADGroups = 'In diesem Bildschirm werden die aktuellen Gruppen angezeigt, zu denen der angegebene Benutzer gehört.'
 		
-		##### Add Form
+		##### Add AD Group Form
+		$TTAddtxtADGroup = 'Bitte füllen Sie dieses Feld mit der AD-Gruppe (oder dem Platzhalter) aus, nach der Sie suchen möchten.'
+		$TTAddlstAddADGroups = "Diese Dropdown-Liste enthält die gefundenen Gruppen basierend auf den Suchkriterien.`r`nDurch Doppelklicken auf eine Gruppe wird sie an die andere Dropdown-Liste gesendet, die dem Benutzer hinzugefügt werden kann.`r`nCtrl + A wählt alle gefundenen Gruppen aus.`r`nDurch Drücken von Ctrl+C werden die ausgewählten Gruppen in die Zwischenablage kopiert."
+		$TTAddlstGroupsToBeAdded = "Dieses Listenfeld enthält die Gruppen, die dem angegebenen Benutzer hinzugefügt werden können.`r`nDurch Doppelklicken auf eine Gruppe wird sie aus der Liste entfernt.`r`nDurch Drücken von Ctrl+V im Listenfeld ausgewählt ist, wird in die Zwischenablage Inhalt eingefügt."
 		$TTAddbtnAdd = 'Diese Aktion durchläuft die ausgewählten Gruppen und fügt sie dem angegebenen Benutzer hinzu.'
 		$TTAddbtnCancel = 'Diese Aktion bricht das Hinzufügen ab und schließt das Formular.'
 		$TTAddbtnAgain = 'Diese Aktion bringt das Formular in seinen ursprünglichen Zustand zurück.'
@@ -404,10 +407,6 @@ function Set-UILanguage ($Culture)
 		$TTAddbtnLeft = "Diese Aktion entfernt die ausgewählten Gruppen aus der Liste `'Gruppe(n) hinzufügen`'."
 		$TTAddbtnRight = "Mit dieser Aktion werden die ausgewählten Gruppen aus der Liste `'Gefundene Gruppe(n)`' zur Liste `'Gruppe(n) hinzufügen`" hinzugefügt."
 		$TTAddrtbAddOutput = 'Dies ist der Protokollbildschirm.'
-		
-		$TTAddtxtADUserorGroup = 'Bitte füllen Sie dieses Feld mit der Benutzer-/Gruppenname (oder dem Platzhalter) aus, nach der Sie suchen möchten.'
-		$TTAddlstAddADUsersorGroups = "Diese Dropdown-Liste enthält die gefundenen Benutzer/Gruppen basierend auf den Suchkriterien.`r`nDurch Doppelklicken auf eine Regel wird sie an die andere Dropdown-Liste gesendet, die dem Benutzer/Gruppe hinzugefügt werden kann.`r`nCtrl+A wählt alle gefundenen Benutzer/Gruppen aus.`r`nDurch Drücken von Ctrl+C werden die ausgewählten Regeln in die Zwischenablage kopiert."
-		$TTAddlstUsersorGroupsToBeAdded = "Dieses Listenfeld enthält die Benutzer/Gruppen, die dem angegebenen Benutzer/Gruppe hinzugefügt werden können.`r`nDurch Doppelklicken auf eine Regel wird sie aus der Liste entfernt.`r`nDurch Drücken von Ctrl+V im Listenfeld ausgewählt ist, wird in die Zwischenablage Inhalt eingefügt."
 		
 		#### Groups Tab
 		$TTGRPtxtGroupname = 'Geben Sie hier den Gruppennamen der Gruppe ein, nach der Sie suchen möchten.'
@@ -425,13 +424,23 @@ function Set-UILanguage ($Culture)
 		$TTSGbtnOK = 'Diese Aktion verwendet die markierte Gruppe für weitere Aktionen.'
 		$TTSGlstSelectObject = "Diese Liste enthält die Gruppen, die basierend auf der Eingabe gefunden wurden.`r`nBitte wählen Sie eine Gruppe aus, um fortzufahren."
 		
+		$TTAddUtxtADUser = 'Bitte füllen Sie dieses Feld mit dem AD-Benutzer (oder Platzhalter) aus, nach dem Sie suchen möchten.'
+		$TTAddUlstAddADUsers = "Diese Dropdown-Liste enthält die gefundenen Benutzer basierend auf den Suchkriterien.`r`n Durch Doppelklicken auf einen Benutzer wird diese an die andere Dropdown-Liste gesendet, die dem Benutzer hinzugefügt werden kann.`r`nCtrl+A wählt alle gefundenen Benutzer aus.`r`nDurch Drücken von Ctrl+C werden die ausgewählten Benutzer in die Zwischenablage kopiert."
+		$TTAddUlstUsersToBeAdded = "Dieses Listenfeld enthält die Benutzer, die bereit sind, der angegebenen Gruppe hinzugefügt zu werden.`r`nDurch Doppelklicken auf einen Benutzer wird dieser aus der Liste entfernt.`r`nDurch Drücken von Ctrl+V im Listenfeld ausgewählt ist, wird der Inhalt der Zwischenablage eingefügt."
+		$TTAddUbtnAdd = 'Diese Aktion führt die ausgewählten Benutzer durch und fügt sie der angegebenen Gruppe hinzu.'
+		$TTAddUbtnCancel = 'Diese Aktion bricht das Hinzufügen ab und schließt das Formular.'
+		$TTAddUbtnAgain = 'Diese Aktion bringt das Formular in seinen ursprünglichen Zustand zurück.'
+		$TTAddUbtnRetrieve = 'Diese Aktion sucht anhand Ihrer Eingabe nach Active Directory-Benutzern.'
+		$TTAddUbtnLeft = "Diese Aktion entfernt die ausgewählten Benutzer aus der Liste `'Benutzer hinzufügen`'."
+		$TTAddUbtnRight = "Diese Aktion fügt die ausgewählten Benutzer aus der Liste `'Gefundene Benutzer`' zur Liste der hinzuzufügenden Benutzer hinzu."
+		$TTAddUrtbAddOutput = 'Dies ist der Protokollbildschirm.'
+		
 		### Verbose Output
 		#### General Strings
 		$VBInfo = 'INFO:'
 		$VBWarning = 'WARNUNG:'
 		$VBError = 'FEHLER:'
 		$VBSuccess = 'ERFOLG:'
-		$VBPRequiredPermissionsMissing = 'Für die Verwendung dieser Anwendung fehlen die richtigen Berechtigungen. Bitte wenden Sie sich an den Systemadministrator.'
 		$VBModuleCheck = 'Prüfen'
 		$VBModule = 'Modul'
 		$VBModuleAlreadyImported = 'Modul wurde bereits importiert.'
@@ -459,7 +468,6 @@ function Set-UILanguage ($Culture)
 		$VBNoUserFound = 'Kein Benutzer mit folgendem Benutzernamen gefunden'
 		$VBNoGroup = 'Keine Gruppe(n) ausgewählt. Wählen Sie eine oder mehrere Gruppen aus.'
 		$VBUsersToBeDeleted = 'Die folgenden Benutzer werden aus der angegebenen Gruppe entfernt:'
-		$VBUserSelectionCancelled = 'Benutzerauswahl abgebrochen.'
 		$VBGroupsToBeDeleted = 'Der Benutzer wird aus den folgenden Gruppe(n) entfernt:'
 		
 		$VBRemovingUser = 'Benutzer aus Gruppe entfernen'
@@ -475,25 +483,18 @@ function Set-UILanguage ($Culture)
 		$MsgBody = 'Möchten Sie die Gruppe(n) wirklich löschen?'
 		$MsgBodyExport = 'Möchten Sie alle Gruppen exportieren?'
 		
-		##### Add Form
+		##### Add Group to User Form
 		$VBGroupToBeAdded = 'Gruppen hinzufügen:'
 		$VBGroupToBeAddedCancelled = 'Gruppe(n) hinzufügen abgebrochen.'
 		$VBGroupToBeAddedSuccess = 'Gruppe erfolgreich hinzugefügt'
 		$VBGroupToBeAddedFailed = 'Gruppe kann nicht hinzugefügt werden'
 		$VBGroupAlreadyAdded = 'Ausgewählte Gruppe wurde bereits hinzugefügt.'
 		
-		$VBUserToBeAdded = 'Benutzer hinzufügen:'
-		$VBUserToBeAddedCancelled = 'Benutzer hinzugefügen abgebrochen.'
-		$VBUserToBeAddedSuccess = 'Benutzer erfolgreich hinzugefügt.'
-		$VBUserToBeAddedFailed = 'Benutzer kann nicht hinzugefügt werden.'
-		$VBUserAlreadyAdded = 'Ausgewählter Benutzer wurde bereits hinzugefügt.'
-		
 		#### Groups Tab
 		$VBGRPNoGroupName = 'Geben Sie einen Gruppennamen ein, nach dem Sie suchen möchten.'
 		$VBGRPNoGroupFound = 'Keine Gruppe mit folgendem Namen gefunden'
 		$VBGRPNoMember = 'Keine Mitglieder ausgewählt. Wählen Sie ein oder mehrere Mitglieder aus. '
 		$VBGRPMembersToBeDeleted = 'Die folgenden Mitglieder werden aus der Gruppe entfernt:'
-		$VBGroupSelectionCancelled = 'Gruppenauswahl abgebrochen.'
 		
 		$VBGRPRemovingMember = 'Mitglied aus Gruppe entfernen'
 		$VBGRPRemovingMemberSuccess = 'Mitglied erfolgreich aus Gruppe entfernt'
@@ -502,6 +503,13 @@ function Set-UILanguage ($Culture)
 		
 		$VBGRPMembersCopied = 'Ausgewählte Mitglieder in die Zwischenablage kopiert.'
 		$VBGRPMembersExported = 'Ausgewählte Mitglieder exportiert.'
+		
+		###### Add User to Group Form
+		$VBUserToBeAdded = 'Benutzer hinzufügen:'
+		$VBUserToBeAddedCancelled = 'Benutzer hinzugefügen abgebrochen.'
+		$VBUserToBeAddedSuccess = 'Benutzer erfolgreich hinzugefügt.'
+		$VBUserToBeAddedFailed = 'Benutzer kann nicht hinzugefügt werden.'
+		$VBUserAlreadyAdded = 'Ausgewählter Benutzer wurde bereits hinzugefügt.'
 		
 		$GRPMsgBody = 'Möchten Sie die Mitglieder wirklich löschen?'
 		$GRPMsgBodyExport = 'Möchten Sie alle Mitglieder exportieren?'
@@ -519,15 +527,9 @@ function Set-UILanguage ($Culture)
 		$SSSettingFormControls = 'initializing form controls'
 		$SSSettingUILanguage = 'setting language'
 		$SSConfiguringRemotePSSession = 'configuring PS-Remoting session'
-		$STSRefreshingMembership = 'Refreshing group membership'
-		$STSSearchingGroups = 'Searching group(s)...'
-		$STSRemovingGroups = 'Removing group(s)...'
-		$STSAddingGroups = 'Adding group(s)...'
-		$STSSearchingUsers = 'Searching user(s)...'
-		$STSRemovingUsers = 'Removing user(s)...'
-		$STSAddingUsers = 'Adding user(s)...'
-		$STSDone = 'Done'
-		$STSReady = 'Ready'
+		$SSRefreshingMembership = 'Refreshing group membership'
+		$SSSearchingGroups = 'Searching groups...'
+		$SSSearchingUsers = 'Searching users...'
 		
 		$ButtonSearch = "&Search"
 		$ButtonAdd = "&Add"
@@ -554,30 +556,22 @@ function Set-UILanguage ($Culture)
 		$LabelSamAccountName = 'SamAccountName:'
 		$LabelUserPrincipalName = 'User Principal Name:'
 		$LabelEmailAddress = 'Email address:'
-		$LabelGroupMembers = 'Number of groups:'
 		$GroupUserDetails = 'User details'
 		
-		#### Add Form
+		#### Add Group to User Form
+		$AFFormName = 'Active Directory Users - Add Group(s)'
+		$AFlblADGroup = 'AD group:'
 		$AFbtnAdd = "&Add"
 		$AFbtnCancel = "&Cancel"
 		$AFbtnRetrieve = "&Retrieve"
-		$AFFormNameGroups = 'Active Directory Users - Add Group(s)'
-		$AFlblADGroup = 'Groupname:'
 		$AFNoADGroup = 'No group name entered.'
 		$AFADGroupFound = 'Found group(s):'
 		$AFADGroupInvalid = 'No group(s) found.'
 		$AFGroupsFound = 'Group(s) found:'
 		$AFGroupsToBeAdded = 'Group(s) to be added:'
-		$AFFormNameUsers = 'Active Directory Groups - Add user(s)'
-		$AFlblADUser = 'Username:'
-		$AFNoADUser = 'No username entered.'
-		$AFUserFound = 'User(s) found:'
-		$AFADUserInvalid = 'No user(s) found.'
-		$AFUsersFound = 'Found user(s):'
-		$AFUsersToBeAdded = 'Add User(s):'
 		
 		#### Groups Tab
-		$GRPLabelGroupname = 'Name:'
+		$GRPLabelGroupname = 'Groupname:'
 		$GRPLabelGroupCategory = 'Group Category:'
 		$GRPLabelGroupScope = 'Group Scope:'
 		$GRPLabelGroupInfo = 'Group Info:'
@@ -592,6 +586,15 @@ function Set-UILanguage ($Culture)
 		$SGFormNameUsers = 'Active Directory Users - Select User'
 		$SGbtnCancel = "&Cancel"
 		$SGbtnOK = "&OK"
+		
+		#### Add User to Group Form
+		$AUFormName = 'Active Directory Groups - Add user(s)'
+		$AUlblADUser = 'AD User:'
+		$AUNoADUser = 'No username entered.'
+		$AUUserFound = 'User(s) found:'
+		$AUADUserInvalid = 'No user(s) found.'
+		$AUUsersFound = 'Found user(s):'
+		$AUUsersToBeAdded = 'Add User(s):'
 		
 		### Tooltip text
 		#### General Form Controls
@@ -609,7 +612,10 @@ function Set-UILanguage ($Culture)
 		$TTbtnExport = 'This action exports the selected group(s) to a file.'
 		$TTlstADGroups = 'This screen will display the current groups that the specified user is a member of.'
 		
-		##### Add Form
+		##### Add AD Group Form
+		$TTAddtxtADGroup = 'Please fill in this field with the AD group (or wildcard) you want to search for.'
+		$TTAddlstAddADGroups = "This drop-down list contains the groups found, based on the search criteria.`r`nDouble clicking on a group will send it to the other drop-down list, ready to be added to the user.`r`nCtrl+A selects all found groups.`r`nPressing Ctrl+C copies the selected groups to the clipboard."
+		$TTAddlstGroupsToBeAdded = "This list box contains the groups that are ready to be added to the specified user.`r`nDouble clicking on a group will remove it from the list.`r`nBy pressing Ctrl+V while the list box is selected, the clipboard content is pasted."
 		$TTAddbtnAdd = 'This action will loop through the selected groups and add them to the specified user.'
 		$TTAddbtnCancel = 'This action will cancel the add and close the form.'
 		$TTAddbtnAgain = 'This action will return the form to its original state.'
@@ -617,10 +623,6 @@ function Set-UILanguage ($Culture)
 		$TTAddbtnLeft = "This action will remove the selected group(s) from the `'Add Group(s)`' list."
 		$TTAddbtnRight = "This action will add the selected group(s) from the `'Found Group(s)`' list to the `'Add Group(s)`' list."
 		$TTAddrtbAddOutput = 'This is the log screen.'
-		
-		$TTAddtxtADUserorGroup = 'Please fill in this field with the user-/groupname (or wildcard) you want to search for.'
-		$TTAddlstAddADUsersorGroups = "This drop-down list contains the users/groups found, based on the search criteria.`r`nDouble clicking on a line will send it to the other drop-down list, ready to be added to the user/group.`r`nCtrl+A selects all found users/groups.`r`nPressing Ctrl+C copies the selected lines to the clipboard."
-		$TTAddlstUsersGroupsToBeAdded = "This list box contains the users/groups that are ready to be added to the specified user/group.`r`nDouble clicking on a line will remove it from the list.`r`nBy pressing Ctrl+V while the list box is selected, the clipboard content is pasted."
 		
 		#### Groups Tab
 		$TTGRPtxtGroupname = 'Enter the group name of the group you want to look up here.'
@@ -638,13 +640,23 @@ function Set-UILanguage ($Culture)
 		$TTSGbtnOK = 'This action will use the highlighted group for further actions.'
 		$TTSGlstSelectObject = "This list contains the groups found based on input.`r`nPlease select a group to proceed."
 		
+		$TTAddUtxtADUser = 'Please fill in this field with the AD user (or wildcard) you want to search for.'
+		$TTAddUlstAddADUsers = "This drop-down list contains the users found, based on the search criteria.`r`nDouble-clicking a user will send it to the other drop-down list, ready to be added to the user.`r`nCtrl+A selects all found users.`r`n Pressing Ctrl+C copies the selected users to the clipboard."
+		$TTAddUlstUsersToBeAdded = "This list box contains the users who are ready to be added to the specified group.`r`nDouble clicking on a user will remove it from the list.`r`nBy pressing Ctrl+V while the list box is selected, the contents of the clipboard are pasted."
+		$TTAddUbtnAdd = 'This action will run through the selected users and add them to the specified group.'
+		$TTAddUbtnCancel = 'This action will cancel the add and close the form.'
+		$TTAddUbtnAgain = 'This action will return the form to its original state.'
+		$TTAddUbtnRetrieve = 'This action searches for Active Directory users based on your input.'
+		$TTAddUbtnLeft = "This action will remove the selected user(s) from the `'Add User(s)`' list."
+		$TTAddUbtnRight = "This action will add the selected user(s) from the `'Found user(s)`' list to the `'User(s) to be added`' list."
+		$TTAddUrtbAddOutput = 'This is the log screen.'
+		
 		### Verbose output
 		#### General strings
 		$VBInfo = 'INFO:'
 		$VBWarning = 'WARNING:'
 		$VBError = 'ERROR:'
 		$VBSuccess = 'SUCCESS:'
-		$VBPRequiredPermissionsMissing = 'The correct permissions are missing to use this application. Please contact your System Administrator. '
 		$VBModuleCheck = 'Check for'
 		$VBModule = 'module'
 		$VBModuleAlreadyImported = 'Module has already been imported.'
@@ -672,9 +684,8 @@ function Set-UILanguage ($Culture)
 		$VBNoUserFound = 'No user found with the following username'
 		$VBNoGroup = 'No group(s) selected. Select 1 or more groups.'
 		$VBUsersToBeDeleted = 'The following users will be removed from the specified group:'
-		$VBUserSelectionCancelled = 'User selection cancelled.'
 		$VBGroupsToBeDeleted = 'The user will be removed from the following group(s):'
-		
+
 		$VBRemovingUser = 'Remove user from group'
 		$VBRemovingUserSuccess = 'User successfully removed from the group'
 		$VBRemovingUserFailed = 'Error removing user from group'
@@ -688,26 +699,19 @@ function Set-UILanguage ($Culture)
 		$MsgBody = 'Are you sure you want to delete the group(s)?'
 		$MsgBodyExport = 'Do you want to export all groups?'
 
-		##### Add Form
+		##### Add Group to User Form
 		$VBGroupToBeAdded = 'Add Group:'
 		$VBGroupToBeAddedCancelled = 'Add group(s) canceled.'
 		$VBGroupToBeAddedSuccess = 'Group added successfully'
 		$VBGroupToBeAddedFailed = 'Unable to add group'
 		$VBGroupAlreadyAdded = 'Selected group has already been added.'
-		
-		$VBUserToBeAdded = 'Add User:'
-		$VBUserToBeAddedCancelled = 'Add user(s) canceled.'
-		$VBUserToBeAddedSuccess = 'User added successfully.'
-		$VBUserToBeAddedFailed = 'Unable to add user.'
-		$VBUserAlreadyAdded = 'Selected user has already been added.'
-		
+
 		#### Groups Tab
 		$VBGRPNoGroupName = 'Please enter a group name you want to search for.'
 		$VBGRPNoGroupFound = 'No group found with the following name'
 		$VBGRPNoMember = 'No member(s) selected. Select 1 or more members. '
 		$VBGRPMembersToBeDeleted = 'The following member(s) will be removed from the group:'
-		$VBGroupSelectionCancelled = 'Group selection cancelled.'
-		
+
 		$VBGRPRemovingMember = 'Remove member from group'
 		$VBGRPRemovingMemberSuccess = 'Member successfully removed from group'
 		$VBGRPRemovingMemberFailed = 'Error removing member from group'
@@ -716,6 +720,13 @@ function Set-UILanguage ($Culture)
 		$VBGRPMembersCopied = 'Selected member(s) copied to clipboard.'
 		$VBGRPMembersExported = 'Selected member(s) exported.'
 		
+		##### Add User to Group Form
+		$VBUserToBeAdded = 'Add User:'
+		$VBUserToBeAddedCancelled = 'Add user(s) canceled.'
+		$VBUserToBeAddedSuccess = 'User added successfully.'
+		$VBUserToBeAddedFailed = 'Unable to add user.'
+		$VBUserAlreadyAdded = 'Selected user has already been added.'
+
 		$GRPMsgBody = 'Are you sure you want to delete the member(s)?'
 		$GRPMsgBodyExport = 'Do you want to export all members?'
 		#endregion English Language
@@ -732,15 +743,9 @@ function Set-UILanguage ($Culture)
 		SSSettingFormControls		 = $SSSettingFormControls
 		SSSettingUILanguage			 = $SSSettingUILanguage
 		SSConfiguringRemotePSSession = $SSConfiguringRemotePSSession
-		STSRefreshingMembership		 = $STSRefreshingMembership
-		STSSearchingGroups		     = $STSSearchingGroups
-		STSRemovingGroups			 = $STSRemovingGroups
-		STSAddingGroups				 = $STSAddingGroups
-		STSSearchingUsers		     = $STSSearchingUsers
-		STSRemovingUsers		     = $STSRemovingUsers
-		STSAddingUsers			     = $STSAddingUsers
-		STSDone					       = $STSDone
-		STSReady					   = $STSReady
+		SSRefreshingMembership		 = $SSRefreshingMembership
+		SSSearchingGroups		     = $SSSearchingGroups
+		SSSearchingUsers		     = $SSSearchingUsers
 		ButtonSearch				 = $ButtonSearch
 		ButtonAdd				     = $ButtonAdd
 		ButtonRemove				 = $ButtonRemove
@@ -763,7 +768,6 @@ function Set-UILanguage ($Culture)
 		LabelSamAccountName		     = $LabelSamAccountName
 		LabelUserPrincipalName	     = $LabelUserPrincipalName
 		LabelEmailAddress		     = $LabelEmailAddress
-		LabelGroupMembers			 = $LabelGroupMembers
 		GroupUserDetails			 = $GroupUserDetails
 		GRPLabelGroupname		     = $GRPLabelGroupname
 		GRPLabelGroupCategory	     = $GRPLabelGroupCategory
@@ -778,6 +782,13 @@ function Set-UILanguage ($Culture)
 		SGFormNameUsers			 	 = $SGFormNameUsers
 		SGbtnOK						 = $SGbtnOK
 		SGbtnCancel					 = $SGbtnCancel
+		AUFormName				     = $AUFormName
+		AUlblADUser				 	 = $AUlblADUser
+		AUNoADUser				     = $AUNoADUser
+		AUUserFound				 	 = $AUUserFound
+		AUADUserInvalid			 	 = $AUADUserInvalid
+		AUUsersFound			     = $AUUsersFound
+		AUUsersToBeAdded		     = $AUUsersToBeAdded
 		TTcmbLanguage			     = $TTcmbLanguage
 		TTbtnExit				     = $TTbtnExit
 		TTrtbOutput				     = $TTrtbOutput
@@ -789,9 +800,9 @@ function Set-UILanguage ($Culture)
 		TTbtnCopy				     = $TTbtnCopy
 		TTbtnExport				     = $TTbtnExport
 		TTlstADGroups			     = $TTlstADGroups
-		TTAddtxtADUserorGroup			= $TTAddtxtADUSerorGroup
-		TTAddlstAddADUsersorGroups		= $TTAddlstAddADUsersorGroups
-		TTAddlstUsersorGroupsToBeAdded	= $TTAddlstUsersorGroupsToBeAdded
+		TTAddtxtADGroup			     = $TTAddtxtADGroup
+		TTAddlstAddADGroups		     = $TTAddlstAddADGroups
+		TTAddlstGroupsToBeAdded	     = $TTAddlstGroupsToBeAdded
 		TTAddbtnAdd				     = $TTAddbtnAdd
 		TTAddbtnCancel			     = $TTAddbtnCancel
 		TTAddbtnAgain			     = $TTAddbtnAgain
@@ -810,11 +821,20 @@ function Set-UILanguage ($Culture)
 		TTSGbtnOK					 = $TTSGbtnOK
 		TTSGbtnCancel				 = $TTSGbtnCancel
 		TTSGlstSelectObject			 = $TTSGlstSelectObject
+		TTAddUtxtADUser			 	 = $TTAddUtxtADUser
+		TTAddUlstAddADUsers		 	 = $TTAddUlstAddADUsers
+		TTAddUlstUsersToBeAdded	 	 = $TTAddUlstUsersToBeAdded
+		TTAddUbtnAdd			     = $TTAddUbtnAdd
+		TTAddUbtnCancel				 = $TTAddUbtnCancel
+		TTAddUbtnAgain			     = $TTAddUbtnAgain
+		TTAddUbtnRetrieve		     = $TTAddUbtnRetrieve
+		TTAddUbtnLeft			     = $TTAddUbtnLeft
+		TTAddUbtnRight			     = $TTAddUbtnRight
+		TTAddUrtbAddOutput		     = $TTAddUrtbAddOutput
 		VBInfo					     = $VBInfo
 		VBWarning				     = $VBWarning
 		VBError					     = $VBError
 		VBSuccess				     = $VBSuccess
-		VBPRequiredPermissionsMissing = $VBPRequiredPermissionsMissing
 		VBModuleCheck			     = $VBModuleCheck
 		VBModule					 = $VBModule
 		VBModuleAlreadyImported	     = $VBModuleAlreadyImported
@@ -840,9 +860,7 @@ function Set-UILanguage ($Culture)
 		VBNoUserFound			     = $VBNoUserFound
 		VBNoGroup				     = $VBNoGroup
 		VBUsersToBeDeleted			 = $VBUsersToBeDeleted
-		VBUserSelectionCancelled	 = $VBUserSelectionCancelled
 		VBGroupsToBeDeleted		     = $VBGroupsToBeDeleted
-		VBGroupSelectionCancelled	 = $VBGroupSelectionCancelled
 		VBRemovingUser			     = $VBRemovingUser
 		VBRemovingUserSuccess	     = $VBRemovingUserSuccess
 		VBRemovingUserFailed		 = $VBRemovingUserFailed
@@ -857,23 +875,16 @@ function Set-UILanguage ($Culture)
 		VBUserAlreadyAdded		     = $VBUserAlreadyAdded
 		MsgBody					     = $MsgBody
 		MsgBodyExport			     = $MsgBodyExport
+		AFFormName				     = $AFFormName
+		AFlblADGroup				 = $AFlblADGroup
 		AFbtnAdd					 = $AFbtnAdd
 		AFbtnCancel				     = $AFbtnCancel
 		AFbtnRetrieve			     = $AFbtnRetrieve
-		AFFormNameGroups		     = $AFFormNameGroups
-		AFlblADGroup				 = $AFlblADGroup
 		AFNoADGroup				     = $AFNoADGroup
 		AFADGroupFound			     = $AFADGroupFound
 		AFADGroupInvalid			 = $AFADGroupInvalid
 		AFGroupsFound			     = $AFGroupsFound
 		AFGroupsToBeAdded		     = $AFGroupsToBeAdded
-		AFFormNameUsers			     = $AFFormNameUsers
-		AFlblADUser				     = $AFlblADUser
-		AFNoADUser				     = $AFNoADUser
-		AFUserFound				     = $AFUserFound
-		AFADUserInvalid			     = $AFADUserInvalid
-		AFUsersFound				 = $AFUsersFound
-		AFUsersToBeAdded			 = $AFUsersToBeAdded
 		VBGroupToBeAdded			 = $VBGroupToBeAdded
 		VBGroupToBeAddedCancelled    = $VBGroupToBeAddedCancelled
 		VBGroupToBeAddedSuccess	     = $VBGroupToBeAddedSuccess
@@ -899,42 +910,6 @@ function Set-UILanguage ($Culture)
 	#endregion Export Variable Strings
 }
 
-function IsMember
-{
-	#Parameters
-	param (
-		[String]$Group = "",
-		[String]$Domain = $Env:USERDOMAIN,
-		[String]$GroupSID = ""
-	)
-	
-	# No SID
-	If ($GroupSID -eq "")
-	{
-		If ($Domain -like $env:COMPUTERNAME)
-		{
-			$NtSecurityPrincipal = New-Object System.Security.Principal.NTAccount($Group)
-		}
-		Else
-		{
-			$NtSecurityPrincipal = New-Object System.Security.Principal.NTAccount($Domain, $Group)
-		}
-		$GroupSID = ($NtSecurityPrincipal.Translate([System.Security.Principal.SecurityIdentifier])).Value
-	}
-	
-	# Compare SID with SIDs in the token
-	$Token = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-	$GroupSIDs = $Token.Groups
-	ForEach ($Sid in $GroupSIDs)
-	{
-		# Is member
-		If ($Sid -eq $GroupSID) { Return $True }
-	}
-	
-	# Is no member
-	Return $False
-}
-
 function Get-ADUserObject
 {
 	Param (
@@ -943,7 +918,7 @@ function Get-ADUserObject
 		[Parameter(Mandatory = $true)]
 		[string]$FilterType
 	)
-	$UserCount = @()
+	
 	if ($RemoteADModule)
 	{
 		$UserCount = Invoke-Command -Session $Session -ScriptBlock {
@@ -959,6 +934,7 @@ function Get-ADUserObject
 		$UserCount = Get-ADUser -Filter { $FilterType -like $Search } -Properties * -ErrorAction Stop | Sort-Object SamAccountName
 		#Write-Host "Native PowerShell"
 	}
+	
 	return $UserCount
 }
 
@@ -970,7 +946,7 @@ function Get-ADGroupObject
 		[Parameter(Mandatory = $true)]
 		[string]$FilterType		
 	)
-	$GroupCount = @()
+	
 	if ($RemoteADModule)
 	{
 		$GroupCount = Invoke-Command -Session $Session -ScriptBlock {
@@ -1317,7 +1293,6 @@ $AvailableLanguages = @("English","Nederlands","Deutsch")
 $VersionNumber = [System.Windows.Forms.Application]::ProductVersion
 $OrgName = "Radboudumc $([char]0x00A9)"
 $Object = @()
-$RequiredGroupMembership = 'rol.Applicatie.ADUC.gebruikers'
 #endregion
 
 #region Security
