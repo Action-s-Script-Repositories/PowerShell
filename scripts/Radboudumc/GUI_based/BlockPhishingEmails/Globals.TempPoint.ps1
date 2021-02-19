@@ -175,7 +175,6 @@ function Set-UILanguage ($Culture)
 		$VBSessionNoCAS = 'Geen CAS server gevonden. Neem contact op met uw systeembeheerder.'
 		
 		$VBNoEmailAddress = 'Vul een e-mailadres in.'
-		$VBInvalidEmailAddress = 'Ongeldigd e-mailadres.'
 		$VBPrevCountEmail = 'Aantal oude geblokkeerde e-mailadressen:'
 		$VBNewCountEmail = 'Aantal nieuwe geblokkeerde e-mailadressen:'
 		$VBNoKeywords = 'Vul een tekstzin in om op te filteren.'
@@ -250,7 +249,6 @@ function Set-UILanguage ($Culture)
 		$VBSessionNoCAS = 'Keine CAS-Server gefunden. Wenden Sie sich an Ihren Systemsadministrator.'
 		
 		$VBNoEmailAddress = 'Bitte geben Sie eine E-Mail-Adresse ein.'
-		$VBInvalidEmailAddress = 'Ungültige E-Mail-Adresse.'
 		$VBPrevCountEmail = 'Anzahl der vorherigen E-Mail-Adressblöcke:'
 		$VBNewCountEmail = 'Neue Anzahl von E-Mail-Adressblöcken:'
 		$VBNoKeywords = 'Bitte geben Sie eine Textphrase ein, nach der gefiltert werden soll.'
@@ -325,7 +323,6 @@ function Set-UILanguage ($Culture)
 		$VBPSSessionInvalid = 'PS remoting no valid session found. Unable to continue, please contact your Systems Administrator.'
 		$VBSessionNoCAS = 'No CAS server found. Unable to continue, please contact your Systems Administrator.'
 		$VBNoEmailAddress = 'Please fill in an emailaddress.'
-		$VBInvalidEmailAddress = 'Invalid email address.'
 		$VBPrevCountEmail = 'Previous emailaddress block count:'
 		$VBNewCountEmail = 'New emailaddress block count:'
 		$VBNoKeywords = 'Please fill in a text phrase to filter on.'
@@ -395,7 +392,6 @@ function Set-UILanguage ($Culture)
 		VBPSSessionInvalid	    	= $VBPSSessionInvalid
 		VBSessionNoCAS		    	= $VBSessionNoCAS
 		VBNoEmailAddress	     	= $VBNoEmailAddress
-		VBInvalidEmailAddress		= $VBInvalidEmailAddress
 		VBPrevCountEmail	     	= $VBPrevCountEmail
 		VBNewCountEmail		 		= $VBNewCountEmail
 		VBNoKeywords		     	= $VBNoKeywords
@@ -415,29 +411,6 @@ function Set-UILanguage ($Culture)
 	$LanguageObject = New-Object -TypeName PSObject -Property $Properties | Select-Object *
 	
 	return $LanguageObject
-}
-
-function IsValidEmail
-{
-	param (
-		[string]$Email
-	)
-	
-	$Regex = '^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$'
-	
-	try
-	{
-		$obj = [mailaddress]$Email
-		if ($obj.Address -match $Regex)
-		{
-			return $True
-		}
-		return $False
-	}
-	catch
-	{
-		return $False
-	}
 }
 #endregion
 
