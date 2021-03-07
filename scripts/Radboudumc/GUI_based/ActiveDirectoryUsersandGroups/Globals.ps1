@@ -136,20 +136,24 @@ function Set-UILanguage ($Culture)
 		$AFbtnAdd = "&Toevoegen"
 		$AFbtnCancel = "&Annuleren"
 		$AFbtnRetrieve = "&Ophalen"
+		$AFbtnImport = "&Importeren"
 		$AFFormNameGroups = 'Active Directory Gebruikers - Groep(en) toevoegen'
 		$AFlblADGroup = 'Groepsnaam:'
 		$AFNoADGroup = 'Geen groepsnaam ingegeven.'
-		$AFADGroupFound = 'Groep(en) gevonden:'
+		$AFADGroupFound = 'Gevonden groep(en)'
 		$AFADGroupInvalid = 'Geen groep(en) gevonden.'
-		$AFGroupsFound = 'Gevonden groep(en):'
+		$AFGroupsFound = 'Groep(en) gevonden:'
 		$AFGroupsToBeAdded = 'Groep(en) toe te voegen:'
 		$AFFormNameUsers = 'Active Directory Gebruikers - Gebruiker(s) toevoegen'
 		$AFlblADUser = 'Gebruikersnaam'
 		$AFNoADUser = 'Geen gebruikersnaam ingegeven.'
-		$AFUserFound = 'Gebruiker(s) gevonden:'
+		$AFUserFound = 'Gevonden gebruiker(s):'
 		$AFADUserInvalid = 'Geen gebruiker(s) gevonden.'
-		$AFUsersFound = 'Gevonden gebruiker(s):'
+		$AFUsersFound = 'Gebruiker(s) gevonden:'
 		$AFUsersToBeAdded = 'Gebruiker(s) toe te voegen:'
+		$AFSelectAll = 'Alles selecteren'
+		$AFCopy = 'Kopiëren'
+		$AFPaste = 'Plakken'		
 		
 		#### Groups Tab
 		$GRPLabelGroupname = 'Naam:'
@@ -167,6 +171,10 @@ function Set-UILanguage ($Culture)
 		$SGFormNameUsers = 'Active Directory Gebruikers - Gebruiker Selecteren'
 		$SGbtnCancel = "&Annuleren"
 		$SGbtnOK = "&OK"
+		
+		##### Group Details Form
+		$GDFormName = 'Groep details'
+		$GDLabelGroupMembers = 'Groepsleden:'
 		
 		### Tooltip text
 		#### General Form Controls
@@ -211,6 +219,11 @@ function Set-UILanguage ($Culture)
 		$TTGRPbtnExport = 'Deze actie exporteert de geselecteerde gebruiker(s) naar een bestand.'
 		$TTlstGroupMembers = 'Dit scherm zal de huidige leden laten zien van de opgegeven groep.'
 		$TTlstGroupMemberOf = 'Dit scherm toont de huidige groepen waarvan de gespecificeerde groep lid is.'
+		
+		##### Context Menu
+		$TTselectToolStripMenuItem = 'Selecteerd alle items.'
+		$TTcopyToolStripMenuItem = 'Kopieerd alle geselecteerde items naar klembord.'
+		$TTpasteToolStripMenuItem = 'Plakt de inhoud van het klembord.'
 		
 		### Verbose output
 		#### General strings
@@ -274,6 +287,8 @@ function Set-UILanguage ($Culture)
 		$VBUserToBeAddedSuccess = 'Gebruiker succesvol toegevoegd.'
 		$VBUserToBeAddedFailed = 'Kan gebruiker niet toevoegen.'
 		$VBUserAlreadyAdded = 'De geselecteerde gebruiker is al toegevoegd.'
+		
+		$VBImportFileEmpty = 'Importbestand leeg'
 		
 		#### Groups Tab
 		$VBGRPNoGroupName = 'Vul alsjeblieft een groepsnaam in waarop je wilt zoeken.'
@@ -348,20 +363,24 @@ function Set-UILanguage ($Culture)
 		$AFbtnAdd = "&Add"
 		$AFbtnCancel = "A&bbrechen"
 		$AFbtnRetrieve = "Ab&rufen"
+		$AFbtnImport = "&Importieren"
 		$AFFormNameGroups = 'Active Directory Benutzer - Gruppe(n) hinzufügen'
 		$AFlblADGroup = 'Gruppenname:'
 		$AFNoADGroup = 'Kein Gruppenname eingegeben.'
-		$AFADGroupFound = 'Gruppe(n) gefunden:'
+		$AFADGroupFound = 'Gefunden Gruppe(n):'
 		$AFADGroupInvalid = 'Keine Gruppe(n) gefunden:'
 		$AFGroupsFound = 'Gruppe(n) gefunden:'
 		$AFGroupsToBeAdded = 'Gruppe(n) hinzufügen:'
 		$AFFormNameUsers = 'Active Directory-Gruppen - Benutzer hinzufügen'
 		$AFlblADUser = 'Benutzername:'
 		$AFNoADUser = 'Kein Benutzername eingegeben.'
-		$AFUserFound = 'Benutzer gefunden:'
+		$AFUserFound = 'Gefunden Benutzer:'
 		$AFADUserInvalid = 'Keine Benutzer gefunden.'
 		$AFUsersFound = 'Benutzer gefunden:'
 		$AFUsersToBeAdded = 'Benutzer hinzufügen:'
+		$AFSelectAll = 'Alle auswählen'
+		$AFCopy = 'Kopieren'
+		$AFPaste = 'Einfügen'
 		
 		#### Groups Tab
 		$GRPLabelGroupname = 'Name:'
@@ -425,6 +444,15 @@ function Set-UILanguage ($Culture)
 		$TTSGbtnOK = 'Diese Aktion verwendet die markierte Gruppe für weitere Aktionen.'
 		$TTSGlstSelectObject = "Diese Liste enthält die Gruppen, die basierend auf der Eingabe gefunden wurden.`r`nBitte wählen Sie eine Gruppe aus, um fortzufahren."
 		
+		##### Context Menu
+		$TTselectToolStripMenuItem = 'Wählt alle Elemente aus.'
+		$TTcopyToolStripMenuItem = 'Kopiert die ausgewählten Elemente in die Zwizschenablage.'
+		$TTpasteToolStripMenuItem = 'Inhalt der Zwischenablage einfügen.'
+		
+		##### Group Details Form
+		$GDFormName = 'Gruppendetails'
+		$GDLabelGroupMembers = 'Gruppenmitglieder:'
+		
 		### Verbose Output
 		#### General Strings
 		$VBInfo = 'INFO:'
@@ -475,6 +503,9 @@ function Set-UILanguage ($Culture)
 		$MsgBody = 'Möchten Sie die Gruppe(n) wirklich löschen?'
 		$MsgBodyExport = 'Möchten Sie alle Gruppen exportieren?'
 		
+		$GRPMsgBody = 'Möchten Sie die Mitglieder wirklich löschen?'
+		$GRPMsgBodyExport = 'Möchten Sie alle Mitglieder exportieren?'
+		
 		##### Add Form
 		$VBGroupToBeAdded = 'Gruppen hinzufügen:'
 		$VBGroupToBeAddedCancelled = 'Gruppe(n) hinzufügen abgebrochen.'
@@ -487,6 +518,8 @@ function Set-UILanguage ($Culture)
 		$VBUserToBeAddedSuccess = 'Benutzer erfolgreich hinzugefügt.'
 		$VBUserToBeAddedFailed = 'Benutzer kann nicht hinzugefügt werden.'
 		$VBUserAlreadyAdded = 'Ausgewählter Benutzer wurde bereits hinzugefügt.'
+		
+		$VBImportFileEmpty = 'Importdatei leer'
 		
 		#### Groups Tab
 		$VBGRPNoGroupName = 'Geben Sie einen Gruppennamen ein, nach dem Sie suchen möchten.'
@@ -561,6 +594,7 @@ function Set-UILanguage ($Culture)
 		$AFbtnAdd = "&Add"
 		$AFbtnCancel = "&Cancel"
 		$AFbtnRetrieve = "&Retrieve"
+		$AFbtnImport = "&Import"
 		$AFFormNameGroups = 'Active Directory Users - Add Group(s)'
 		$AFlblADGroup = 'Groupname:'
 		$AFNoADGroup = 'No group name entered.'
@@ -571,10 +605,13 @@ function Set-UILanguage ($Culture)
 		$AFFormNameUsers = 'Active Directory Groups - Add user(s)'
 		$AFlblADUser = 'Username:'
 		$AFNoADUser = 'No username entered.'
-		$AFUserFound = 'User(s) found:'
+		$AFUserFound = 'Found user(s):'
 		$AFADUserInvalid = 'No user(s) found.'
-		$AFUsersFound = 'Found user(s):'
-		$AFUsersToBeAdded = 'Add User(s):'
+		$AFUsersFound = 'User(s) found:'
+		$AFUsersToBeAdded = 'User(s) to be added:'
+		$AFSelectAll = 'Select all'
+		$AFCopy = 'Copy'
+		$AFPaste = 'Paste'
 		
 		#### Groups Tab
 		$GRPLabelGroupname = 'Name:'
@@ -638,6 +675,15 @@ function Set-UILanguage ($Culture)
 		$TTSGbtnOK = 'This action will use the highlighted group for further actions.'
 		$TTSGlstSelectObject = "This list contains the groups found based on input.`r`nPlease select a group to proceed."
 		
+		##### Context Menu
+		$TTselectToolStripMenuItem = 'Selects all items.'
+		$TTcopyToolStripMenuItem = 'Copies the selected items to clipboard.'
+		$TTpasteToolStripMenuItem = 'Pastes clipboard content.'
+		
+		##### Group Details Form
+		$GDFormName = 'Group details'
+		$GDLabelGroupMembers = 'Group members:'
+		
 		### Verbose output
 		#### General strings
 		$VBInfo = 'INFO:'
@@ -687,6 +733,9 @@ function Set-UILanguage ($Culture)
 		
 		$MsgBody = 'Are you sure you want to delete the group(s)?'
 		$MsgBodyExport = 'Do you want to export all groups?'
+		
+		$GRPMsgBody = 'Are you sure you want to delete the member(s)?'
+		$GRPMsgBodyExport = 'Do you want to export all members?'
 
 		##### Add Form
 		$VBGroupToBeAdded = 'Add Group:'
@@ -700,6 +749,8 @@ function Set-UILanguage ($Culture)
 		$VBUserToBeAddedSuccess = 'User added successfully.'
 		$VBUserToBeAddedFailed = 'Unable to add user.'
 		$VBUserAlreadyAdded = 'Selected user has already been added.'
+		
+		$VBImportFileEmpty = 'Importfile empty'
 		
 		#### Groups Tab
 		$VBGRPNoGroupName = 'Please enter a group name you want to search for.'
@@ -810,6 +861,11 @@ function Set-UILanguage ($Culture)
 		TTSGbtnOK					 = $TTSGbtnOK
 		TTSGbtnCancel				 = $TTSGbtnCancel
 		TTSGlstSelectObject			 = $TTSGlstSelectObject
+		TTselectToolStripMenuItem	 = $TTselectToolStripMenuItem
+		TTcopyToolStripMenuItem		 = $TTcopyToolStripMenuItem
+		TTpasteToolStripMenuItem	 = $TTpasteToolStripMenuItem
+		GDFormName				     = $GDFormName
+		GDLabelGroupMembers			 = $GDLabelGroupMembers
 		VBInfo					     = $VBInfo
 		VBWarning				     = $VBWarning
 		VBError					     = $VBError
@@ -857,9 +913,12 @@ function Set-UILanguage ($Culture)
 		VBUserAlreadyAdded		     = $VBUserAlreadyAdded
 		MsgBody					     = $MsgBody
 		MsgBodyExport			     = $MsgBodyExport
+		GRPMsgBody					   = $GRPMsgBody
+		GRPMsgBodyExport			   = $GRPMsgBodyExport
 		AFbtnAdd					 = $AFbtnAdd
 		AFbtnCancel				     = $AFbtnCancel
 		AFbtnRetrieve			     = $AFbtnRetrieve
+		AFbtnImport				   	 = $AFbtnImport
 		AFFormNameGroups		     = $AFFormNameGroups
 		AFlblADGroup				 = $AFlblADGroup
 		AFNoADGroup				     = $AFNoADGroup
@@ -874,6 +933,9 @@ function Set-UILanguage ($Culture)
 		AFADUserInvalid			     = $AFADUserInvalid
 		AFUsersFound				 = $AFUsersFound
 		AFUsersToBeAdded			 = $AFUsersToBeAdded
+		AFSelectAll				   	 = $AFSelectAll
+		AFCopy						 = $AFCopy
+		AFPaste						 = $AFPaste
 		VBGroupToBeAdded			 = $VBGroupToBeAdded
 		VBGroupToBeAddedCancelled    = $VBGroupToBeAddedCancelled
 		VBGroupToBeAddedSuccess	     = $VBGroupToBeAddedSuccess
@@ -888,9 +950,8 @@ function Set-UILanguage ($Culture)
 		VBGRPRemovingMemberFailed    = $VBGRPRemovingMemberFailed
 		VBGRPRemovingMemberCancelled = $VBGRPRemovingMemberCancelled
 		VBGRPMembersCopied		     = $VBGRPMembersCopied
-		VBGRPMembersExported		 = $VBGRPMembersExported
-		GRPMsgBody				     = $GRPMsgBody
-		GRPMsgBodyExport			 = $GRPMsgBodyExport
+		VBGRPMembersExported		   = $VBGRPMembersExported
+		VBImportFileEmpty			 = $VBImportFileEmpty
 	}
 	
 	$LanguageObject = New-Object -TypeName PSObject -Property $Properties | Select-Object *
@@ -968,9 +1029,11 @@ function Get-ADGroupObject
 		[Parameter(Mandatory = $true)]
 		[string]$Search,
 		[Parameter(Mandatory = $true)]
-		[string]$FilterType		
+		[string]$FilterType
 	)
+	
 	$GroupCount = @()
+	
 	if ($RemoteADModule)
 	{
 		$GroupCount = Invoke-Command -Session $Session -ScriptBlock {
@@ -994,23 +1057,42 @@ function Get-ADGroupMemberObject
 {
 	Param (
 		[Parameter(Mandatory = $true)]
-		[string]$Search
+		[string]$Search,
+		[Parameter(Mandatory = $false)]
+		[switch]$Recursive
 	)
 	
-	if ($RemoteADModule)
+	if ($Recursive.IsPresent)
 	{
-		$GroupMemberCount = Invoke-Command -Session $Session -ScriptBlock {
-			Param ($search)
-			Import-Module ActiveDirectory
-			Get-ADGroupMember -Identity $search -ErrorAction Stop | Sort-Object Name
-		} -ArgumentList $Search
-		#Write-Host "Remote PowerShell"
+		if ($RemoteADModule)
+		{
+			$GroupMemberCount = Invoke-Command -Session $Session -ScriptBlock {
+				Param ($search)
+				Import-Module ActiveDirectory
+				Get-ADGroupMember -Identity $search -Recursive -ErrorAction Stop | Sort-Object Name
+			} -ArgumentList $Search
+		}
+		else
+		{
+			$GroupMemberCount = Get-ADGroupMember -Identity $Search -Recursive -ErrorAction Stop | Sort-Object Name
+		}
 	}
 	else
 	{
-		$GroupMemberCount = Get-ADGroupMember -Identity $Search -ErrorAction Stop | Sort-Object Name
-		#Write-Host "Native PowerShell"
+		if ($RemoteADModule)
+		{
+			$GroupMemberCount = Invoke-Command -Session $Session -ScriptBlock {
+				Param ($search)
+				Import-Module ActiveDirectory
+				Get-ADGroupMember -Identity $search -ErrorAction Stop | Sort-Object Name
+			} -ArgumentList $Search
+		}
+		else
+		{
+			$GroupMemberCount = Get-ADGroupMember -Identity $Search -ErrorAction Stop | Sort-Object Name
+		}
 	}
+	
 	
 	return $GroupMemberCount
 }

@@ -9,5 +9,6 @@
     <File Build="0" Shared="True" ReferenceFunction="Invoke-Global_ps1">Globals.ps1</File>
     <File Build="0" ReferenceFunction="Show-AddUserorGroup_psf">AddUserorGroup.psf</File>
     <File Build="0" ReferenceFunction="Show-SelectObject_psf">SelectObject.psf</File>
+    <File Build="0" ReferenceFunction="Show-GroupDetails_psf">GroupDetails.psf</File>
   </Files>
 </Project>

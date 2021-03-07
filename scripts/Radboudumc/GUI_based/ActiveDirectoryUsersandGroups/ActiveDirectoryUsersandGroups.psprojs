@@ -4,9 +4,8 @@
   <OpenFolders />
   <OpenFiles>
     <File>Globals.ps1</File>
-    <File>Startup.pss</File>
     <File>MainForm.psf</File>
-    <File>SelectObject.psf</File>
     <File>AddUserorGroup.psf</File>
+    <File>GroupDetails.psf</File>
   </OpenFiles>
 </ProjectState>
